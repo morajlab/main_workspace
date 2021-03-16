@@ -11,7 +11,7 @@ function requireCli() {
     process.env.NX_CLI_SET = 'true';
     let cliPath;
     if (workspace.type === 'nx') {
-        cliPath = '@nrwl/tao/index.js';
+        cliPath = '../../tao/index.js';
     }
     else {
         cliPath = '@angular/cli/lib/init.js';

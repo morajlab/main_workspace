@@ -37,8 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Nx binary files
-!node_modules/.bin/nx
-!node_modules/.bin/nx.cmd
-!node_modules/.bin/nx.ps1

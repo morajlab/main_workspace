@@ -1,0 +1,223 @@
+import os from 'os';
+import pkgUp from 'pkg-up';
+import detectIndent from 'detect-indent';
+import detectNewline from 'detect-newline';
+import parseJson from 'parse-json';
+import type { JSONValue, DependencySet } from './types';
+import * as fs from './utils/fs';
+import * as path from 'path';
+import * as globs from './utils/globs';
+import * as logger from './utils/logger';
+import * as messages from './utils/messages';
+import { BoltError } from './utils/errors';
+
+export default class Config {
+  filePath: string;
+  fileContents: string;
+  json: JSONValue;
+  indent: string;
+  newline: string;
+  invalid: boolean;
+
+  constructor(filePath: string, fileContents: string) {
+    this.filePath = filePath;
+    this.fileContents = fileContents;
+    try {
+      this.indent = detectIndent(fileContents).indent || '  ';
+      this.newline = detectNewline(fileContents) || os.EOL;
+      this.json = parseJson(fileContents);
+    } catch (e) {
+      if (e.name === 'JSONError') {
+        logger.error(messages.errorParsingJSON(filePath), {
+          emoji: '💥',
+          prefix: false
+        });
+      }
+      throw e;
+    }
+  }
+
+  static async findConfigFile(filePath: string): Promise<?string> {
+  return await pkgUp(filePath);
+}
+
+static async init(filePath: string): Promise<Config> {
+  let fileContents;
+  try {
+    fileContents = await fs.readFile(filePath);
+  } catch (e) {
+    if (e.code === 'ENOENT') {
+      throw new BoltError(messages.cannotInitConfigMissingPkgJSON(filePath));
+    }
+    throw e;
+  }
+  return new Config(filePath, fileContents.toString());
+}
+
+async write(json: JSONValue) {
+  let fileContents =
+    JSON.stringify(json, null, this.indent).replace(/\n/g, this.newline) +
+    this.newline;
+  await fs.writeFile(this.filePath, fileContents);
+  this.fileContents = fileContents;
+  this.json = json;
+}
+
+static async getProjectConfig(cwd: string) {
+  let stack = await getPackageStack(cwd);
+  if (stack.length === 0) return null;
+
+  let highest = stack.pop();
+  let matches = [highest];
+
+  while (stack.length) {
+    let current = stack.pop();
+    let patterns = current.config.getWorkspaces();
+
+    if (patterns) {
+      let filePaths = matches.map(match => {
+        return path.relative(
+          path.dirname(current.filePath),
+          path.dirname(match.filePath)
+        );
+      });
+
+      let found = globs.matchWorkspaces(filePaths, patterns);
+
+      if (found.length) {
+        matches.push(current);
+        highest = current;
+      }
+    }
+  }
+
+  return highest.filePath;
+}
+
+getConfig(): { [key: string]: JSONValue } {
+  if (this.invalid) {
+    throw new BoltError(
+      `You need to refresh the Config object for ${this.filePath}`
+    );
+  }
+  let config = this.json;
+
+  if (
+    typeof config !== 'object' ||
+    config === null ||
+    Array.isArray(config)
+  ) {
+    throw new BoltError(
+      `package.json must be an object. See: "${this.filePath}"`
+    );
+  }
+
+  return config;
+}
+
+invalidate() {
+  this.invalid = true;
+}
+
+getDescriptor(): string {
+  if (this.json && typeof this.json.name === 'string') {
+    return this.json.name;
+  } else {
+    return this.filePath;
+  }
+}
+
+getName(): string {
+  let config = this.getConfig();
+  let name = config.name;
+  if (typeof name !== 'string') {
+    throw new BoltError(
+      `package.json#name must be a string. See "${this.filePath}"`
+    );
+  }
+  return name;
+}
+
+getVersion(): string {
+  let config = this.getConfig();
+  let version = config.version;
+  if (typeof version !== 'string') {
+    throw new BoltError(
+      `package.json#version must be a string. See "${this.filePath}"`
+    );
+  }
+  return version;
+}
+
+getPrivate(): boolean | void {
+  let config = this.getConfig();
+  let priv = config.private;
+  if (typeof priv !== 'undefined' && typeof priv !== 'boolean') {
+  throw new BoltError(
+    `package.json#private must be a boolean. See "${this.filePath}"`
+  );
+}
+return priv;
+}
+
+getBoltConfig(): { [key: string]: JSONValue } | void {
+  let config = this.getConfig();
+  let boltConfig = config.bolt;
+  if (typeof boltConfig === 'undefined') return;
+return toObject(
+  boltConfig,
+  `package.json#bolt must be an object. See "${this.filePath}"`
+);
+}
+
+getBoltConfigVersion(): string | void {
+  let config = this.getBoltConfig();
+  let boltVersion = config && config.version;
+  if (typeof boltVersion === 'string') {
+  return boltVersion;
+}
+return;
+}
+
+getWorkspaces(): Array<string> | void {
+  let boltConfig = this.getBoltConfig();
+  if (typeof boltConfig === 'undefined') return;
+let workspaces = boltConfig.workspaces;
+if (typeof workspaces === 'undefined') return;
+return toArrayOfStrings(
+  workspaces,
+  `package.json#bolt.workspaces must be an array of globs. See "${this.filePath}"`
+);
+}
+
+getDeps(depType: string): DependencySet | void {
+  let config = this.getConfig();
+  let deps = config[depType];
+  if (typeof deps === 'undefined') return;
+return toObjectOfStrings(
+  deps,
+  `package.json#${depType} must be an object of strings. See "${this.filePath}"`
+);
+}
+
+getScripts() {
+  let config = this.getConfig();
+  let scripts = config.scripts;
+  if (typeof scripts === 'undefined') return;
+  return toObjectOfStrings(
+    scripts,
+    `package.json#scripts must be an object of strings. See "${this.filePath}"`
+  );
+}
+
+getBin() {
+  let config = this.getConfig();
+  let bin = config.bin;
+  if (typeof bin === 'undefined') return;
+  if (typeof bin === 'string') return bin;
+  return toObjectOfStrings(
+    bin,
+    `package.json#bin must be an object of strings or a string. See "${this.filePath}"`
+  );
+}
+}
