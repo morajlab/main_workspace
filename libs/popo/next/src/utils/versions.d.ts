@@ -1,0 +1,9 @@
+export declare const nxVersion = "*";
+export declare const nextVersion = "10.0.0";
+export declare const zeitNextCss = "1.0.1";
+export declare const zeitNextSass = "1.0.1";
+export declare const nodeSass = "4.14.1";
+export declare const zeitNextLess = "1.0.1";
+export declare const zeitNextStylus = "1.0.1";
+export declare const emotionServerVersion = "10.0.27";
+export declare const babelPluginStyledComponentsVersion = "1.10.7";

@@ -1,0 +1,26 @@
+{
+  "name": "@moraj/nx-polyfills",
+  "version": "0.2.0",
+  "description": "Polyfill library for Nx",
+  "scripts": {},
+  "keywords": [
+    "nx",
+    "nrwl",
+    "plugin",
+    "react",
+    "polyfills",
+    "nx-react",
+    "nx-react-plugin",
+    "@nrwl/react"
+  ],
+  "author": "Morteza Jamali <mortezajamali4241@gmail.com> (https://morteza-jamali.github.io)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morteza-jamali/nx-react-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morteza-jamali/nx-react-plugin/issues"
+  },
+  "homepage": "https://github.com/morteza-jamali/nx-react-plugin#readme"
+}

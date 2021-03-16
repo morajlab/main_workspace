@@ -1,0 +1,71 @@
+{
+  "_args": [
+    [
+      "@nrwl/eslint-plugin-nx@10.4.13",
+      "C:\\Users\\Morteza\\Desktop\\popo-workspace"
+    ]
+  ],
+  "_development": true,
+  "_from": "@nrwl/eslint-plugin-nx@10.4.13",
+  "_id": "@nrwl/eslint-plugin-nx@10.4.13",
+  "_inBundle": false,
+  "_integrity": "sha512-ZTE8JoFd/abXE3AWDUJTyTOn957EDHc34uniIO3/qq+VcwC0ZfOYbFbxlZvN+d20InAD6QCh/H+P9aHElpnEFg==",
+  "_location": "/@nrwl/eslint-plugin-nx",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nrwl/eslint-plugin-nx@10.4.13",
+    "name": "@nrwl/eslint-plugin-nx",
+    "escapedName": "@nrwl%2feslint-plugin-nx",
+    "scope": "@nrwl",
+    "rawSpec": "10.4.13",
+    "saveSpec": null,
+    "fetchSpec": "10.4.13"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nrwl/eslint-plugin-nx/-/eslint-plugin-nx-10.4.13.tgz",
+  "_spec": "10.4.13",
+  "_where": "C:\\Users\\Morteza\\Desktop\\popo-workspace",
+  "author": {
+    "name": "Victor Savkin"
+  },
+  "bugs": {
+    "url": "https://github.com/nrwl/nx/issues"
+  },
+  "dependencies": {
+    "@angular-devkit/core": "~10.1.3",
+    "@typescript-eslint/experimental-utils": "^4.3.0",
+    "confusing-browser-globals": "^1.0.9"
+  },
+  "description": "ESLint Plugin for Nx",
+  "files": [
+    "src",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://nx.dev",
+  "keywords": [
+    "Monorepo",
+    "Web",
+    "Lint",
+    "ESLint",
+    "CLI"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "@nrwl/eslint-plugin-nx",
+  "peerDependencies": {
+    "@nrwl/workspace": "10.4.13",
+    "@typescript-eslint/parser": "^4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrwl/nx.git"
+  },
+  "types": "src/index.d.ts",
+  "version": "10.4.13"
+}

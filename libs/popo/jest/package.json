@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      "@nrwl/jest@10.4.13",
+      "C:\\Users\\Morteza\\Desktop\\popo-workspace"
+    ]
+  ],
+  "_development": true,
+  "_from": "@nrwl/jest@10.4.13",
+  "_id": "@nrwl/jest@10.4.13",
+  "_inBundle": false,
+  "_integrity": "sha512-5tgiLOO6ZVHtWPx7ObGiBp8YkZBH6CZsjeBue/2A6fFt0A4sO5JaFVHijbXrHJM+qQJS6VW9d9hCkvKBk1/8TA==",
+  "_location": "/@nrwl/jest",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nrwl/jest@10.4.13",
+    "name": "@nrwl/jest",
+    "escapedName": "@nrwl%2fjest",
+    "scope": "@nrwl",
+    "rawSpec": "10.4.13",
+    "saveSpec": null,
+    "fetchSpec": "10.4.13"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "/@nrwl/react",
+    "/@nrwl/web",
+    "/nx-electron"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nrwl/jest/-/jest-10.4.13.tgz",
+  "_spec": "10.4.13",
+  "_where": "C:\\Users\\Morteza\\Desktop\\popo-workspace",
+  "author": {
+    "name": "Victor Savkin"
+  },
+  "bugs": {
+    "url": "https://github.com/nrwl/nx/issues"
+  },
+  "builders": "./builders.json",
+  "dependencies": {
+    "@angular-devkit/architect": "~0.1001.3",
+    "@angular-devkit/core": "~10.1.3",
+    "@angular-devkit/schematics": "~10.1.3",
+    "rxjs": "^6.5.4"
+  },
+  "description": "Jest plugin for Nx",
+  "homepage": "https://nx.dev",
+  "keywords": [
+    "Monorepo",
+    "Angular",
+    "React",
+    "Web",
+    "Node",
+    "Nest",
+    "Jest",
+    "Unit Testing",
+    "CLI"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@nrwl/jest",
+  "ng-update": {
+    "requirements": {},
+    "migrations": "./migrations.json"
+  },
+  "peerDependencies": {
+    "@nrwl/workspace": "10.4.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrwl/nx.git"
+  },
+  "schematics": "./collection.json",
+  "types": "index.d.ts",
+  "version": "10.4.13"
+}

@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@moraj/react-hyper": ["libs/react-hyper/src/index.ts"],
+      "@moraj/react-hyper/r": ["libs/react-hyper/src/lib/r.ts"],
+      "@moraj/react-hyper/helper": ["libs/react-hyper/src/lib/helper.ts"],
+      "@moraj/bulmin": ["libs/bulmin/src/index.ts"],
+      "@moraj/nx-polyfills": ["libs/nx-polyfills/src/index.ts"],
+      "@moraj/formaxui": ["libs/formaxui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

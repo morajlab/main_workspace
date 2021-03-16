@@ -1,0 +1,11 @@
+import { BuilderContext, BuilderOutput } from '@angular-devkit/architect';
+import { JsonObject } from '@angular-devkit/core';
+import { Observable } from 'rxjs';
+import * as rollup from 'rollup';
+import { DependentBuildableProjectNode } from '@nrwl/workspace/src/utils/buildable-libs-utils';
+import { PackageBuilderOptions } from '../../utils/types';
+import { NormalizedBundleBuilderOptions } from '../../utils/normalize';
+declare const _default: import("@angular-devkit/architect/src/internal").Builder<PackageBuilderOptions & JsonObject>;
+export default _default;
+export declare function run(rawOptions: PackageBuilderOptions, context: BuilderContext): Observable<BuilderOutput>;
+export declare function createRollupOptions(options: NormalizedBundleBuilderOptions, dependencies: DependentBuildableProjectNode[], context: BuilderContext, packageJson: any, sourceRoot: string): rollup.InputOptions[];

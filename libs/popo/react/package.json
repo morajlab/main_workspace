@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      "@nrwl/react@10.4.13",
+      "C:\\Users\\Morteza\\Desktop\\popo-workspace"
+    ]
+  ],
+  "_development": true,
+  "_from": "@nrwl/react@10.4.13",
+  "_id": "@nrwl/react@10.4.13",
+  "_inBundle": false,
+  "_integrity": "sha512-0+s0j2gXQPoLHi1IWAdznFmTzWPVKN1wreGxlBwmsq1J4qGHWR/c7sFU3+IC3HwI0boZYZ7CEenq+ttlMJtUAw==",
+  "_location": "/@nrwl/react",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nrwl/react@10.4.13",
+    "name": "@nrwl/react",
+    "escapedName": "@nrwl%2freact",
+    "scope": "@nrwl",
+    "rawSpec": "10.4.13",
+    "saveSpec": null,
+    "fetchSpec": "10.4.13"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "/@nrwl/next"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nrwl/react/-/react-10.4.13.tgz",
+  "_spec": "10.4.13",
+  "_where": "C:\\Users\\Morteza\\Desktop\\popo-workspace",
+  "author": {
+    "name": "Victor Savkin"
+  },
+  "bugs": {
+    "url": "https://github.com/nrwl/nx/issues"
+  },
+  "dependencies": {
+    "@angular-devkit/core": "~10.1.3",
+    "@angular-devkit/schematics": "~10.1.3",
+    "@babel/core": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "@nrwl/cypress": "10.4.13",
+    "@nrwl/jest": "10.4.13",
+    "@nrwl/web": "10.4.13",
+    "@svgr/webpack": "^5.4.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.4.0",
+    "url-loader": "^3.0.0"
+  },
+  "description": "React Plugin for Nx",
+  "homepage": "https://nx.dev",
+  "keywords": [
+    "Monorepo",
+    "React",
+    "Web",
+    "Jest",
+    "Cypress",
+    "CLI"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@nrwl/react",
+  "ng-update": {
+    "requirements": {},
+    "migrations": "./migrations.json"
+  },
+  "peerDependencies": {
+    "@nrwl/workspace": "10.4.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrwl/nx.git"
+  },
+  "schematics": "./collection.json",
+  "types": "index.d.ts",
+  "version": "10.4.13"
+}
