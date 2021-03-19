@@ -23,7 +23,7 @@ export default class Package {
     this.config = config;
   }
 
-  static async init(filePath: string) {
+  static init = async (filePath: string) => {
     let config = await Config.init(filePath);
 
     if (!config) {
@@ -31,7 +31,7 @@ export default class Package {
     }
 
     return new Package(filePath, config);
-  }
+  };
 
   /*static async closest(filePath: string) {
     let pkgPath = await Config.findConfigFile(filePath);
@@ -43,11 +43,13 @@ export default class Package {
     return await Package.init(pkgPath);
   }
 */
-  getWorkspacesConfig(): string[] {
+  getWorkspacesConfig = (): string[] => {
     return this.config.getWorkspaces() || [];
-  }
+  };
 
-  getAllDependencies(excludedTypes: BoltTypes.configDependencyType[] = []) {
+  getAllDependencies = (
+    excludedTypes: BoltTypes.configDependencyType[] = []
+  ) => {
     let allDependencies = new Map();
 
     if (excludedTypes.length > 0) {
@@ -77,7 +79,7 @@ export default class Package {
     }
 
     return allDependencies;
-  } /*
+  }; /*
 
   async setDependencyVersionRange(
     depName: string,
@@ -146,7 +148,7 @@ export default class Package {
     return matchedTypes;
   }
 */
-  getDependencyVersionRange(depName: string) {
+  getDependencyVersionRange = (depName: string) => {
     for (let depType of DEPENDENCY_TYPES) {
       let deps = this.config.getDeps(depType);
 
@@ -156,7 +158,7 @@ export default class Package {
     }
 
     return null;
-  } /*
+  }; /*
 
   isSamePackage = (pkg: Package) => pkg.dir === this.dir;
 */
@@ -164,7 +166,7 @@ export default class Package {
 
   getVersion = () => this.config.getVersion();
 
-  getBins(): { name: string; filePath: string }[] {
+  getBins = (): { name: string; filePath: string }[] => {
     let bin = this.config.getBin();
 
     if (typeof bin === "undefined") {
@@ -184,5 +186,5 @@ export default class Package {
         };
       });
     }
-  }
+  };
 }

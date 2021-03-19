@@ -15,7 +15,6 @@
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
-    "tslib": "^1.14.1",
     "array-includes": "^3.0.3",
     "babel-runtime": "^6.25.0",
     "chalk": "^2.0.1",
@@ -47,11 +46,11 @@
     "sort-object": "^3.0.2",
     "task-graph-runner": "^1.0.1",
     "temp-write": "^3.4.0",
+    "tslib": "^1.14.1",
     "typeable-promisify": "^2.0.1",
     "yarn": "^1.9.4"
   },
   "devDependencies": {
-    "@types/pkg-up": "latest",
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.15",

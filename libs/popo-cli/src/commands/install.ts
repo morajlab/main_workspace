@@ -10,7 +10,7 @@ import * as yarn from "../lib/utils/yarn";
 import symlinkPackageDependencies from "../lib/utils/symlinkPackageDependencies";
 import symlinkPackagesBinaries from "../lib/utils/symlinkPackagesBinariesToProject";
 
-export default class Install extends Command {
+export default class InstallCommand extends Command {
   static description = "Packages install command description";
 
   static flags = {
@@ -18,12 +18,8 @@ export default class Install extends Command {
   };
 
   async run() {
-    const { flags } = this.parse(Install);
-    let cwd = process.cwd();
-
-    if (flags.root) {
-      cwd = flags.root;
-    }
+    const { flags } = this.parse(InstallCommand);
+    let cwd = flags.root ?? process.cwd();
 
     let project = await Project.init(cwd);
     let packages = await project.getPackages();

@@ -73,7 +73,7 @@ export default class Config {
   json: BoltTypes.JSONValue;
   indent: string;
   newline: string;
-  invalid: boolean = false;
+  invalid: any = undefined;
 
   constructor(filePath: string, fileContents: string) {
     this.filePath = filePath;
@@ -98,11 +98,11 @@ export default class Config {
     }
   }
 
-  static async findConfigFile(filePath: string): Promise<string> {
+  static findConfigFile = async (filePath: string): Promise<string> => {
     return await pkgUp(filePath);
-  }
+  };
 
-  static async init(filePath: string): Promise<Config> {
+  static init = async (filePath: string): Promise<Config> => {
     let fileContents;
 
     try {
@@ -118,7 +118,7 @@ export default class Config {
     }
 
     return new Config(filePath, fileContents.toString());
-  } /*
+  }; /*
 
   async write(json: BoltTypes.JSONValue) {
     let fileContents =
@@ -129,7 +129,7 @@ export default class Config {
     this.json = json;
   }*/
 
-  static async getProjectConfig(cwd: string) {
+  static getProjectConfig = async (cwd: string) => {
     let stack = await getPackageStack(cwd);
 
     if (stack.length === 0) return null;
@@ -156,9 +156,9 @@ export default class Config {
     }
 
     return highest.filePath;
-  }
+  };
 
-  getConfig(): { [key: string]: BoltTypes.JSONValue } {
+  getConfig = (): { [key: string]: BoltTypes.JSONValue } => {
     if (this.invalid) {
       throw new BoltError(
         `You need to refresh the Config object for ${this.filePath}`
@@ -178,7 +178,7 @@ export default class Config {
     }
 
     return config;
-  } /*
+  }; /*
 
   invalidate() {
     this.invalid = true;
@@ -192,7 +192,7 @@ export default class Config {
     return this.filePath;
   }
 */
-  getName(): string {
+  getName = (): string => {
     let config = this.getConfig();
     let name = config.name;
 
@@ -202,9 +202,9 @@ export default class Config {
       );
     }
     return name;
-  }
+  };
 
-  getVersion(): string {
+  getVersion = (): string => {
     let config = this.getConfig();
     let version = config.version;
 
@@ -215,7 +215,7 @@ export default class Config {
     }
 
     return version;
-  } /*
+  }; /*
 
   getPrivate(): boolean | void {
     let config = this.getConfig();
@@ -230,7 +230,7 @@ export default class Config {
     return priv;
   }
 */
-  getBoltConfig(): { [key: string]: BoltTypes.JSONValue } | void {
+  getBoltConfig = (): { [key: string]: BoltTypes.JSONValue } | void => {
     let config = this.getConfig();
     let boltConfig = config.bolt;
 
@@ -240,9 +240,9 @@ export default class Config {
       boltConfig,
       `package.json#bolt must be an object. See "${this.filePath}"`
     );
-  }
+  };
 
-  getBoltConfigVersion(): string | void {
+  getBoltConfigVersion = (): string | void => {
     let config = this.getBoltConfig();
     let boltVersion = config && config.version;
 
@@ -251,9 +251,9 @@ export default class Config {
     }
 
     return;
-  }
+  };
 
-  getWorkspaces(): string[] | void {
+  getWorkspaces = (): string[] | void => {
     let boltConfig = this.getBoltConfig();
 
     if (typeof boltConfig === "undefined") return;
@@ -266,9 +266,9 @@ export default class Config {
       workspaces,
       `package.json#bolt.workspaces must be an array of globs. See "${this.filePath}"`
     );
-  }
+  };
 
-  getDeps(depType: string): BoltTypes.DependencySet | void {
+  getDeps = (depType: string): BoltTypes.DependencySet | void => {
     let config = this.getConfig();
     let deps = config[depType];
 
@@ -278,9 +278,9 @@ export default class Config {
       deps,
       `package.json#${depType} must be an object of strings. See "${this.filePath}"`
     );
-  }
+  };
 
-  getScripts() {
+  getScripts = () => {
     let config = this.getConfig();
     let scripts = config.scripts;
 
@@ -290,9 +290,9 @@ export default class Config {
       scripts,
       `package.json#scripts must be an object of strings. See "${this.filePath}"`
     );
-  }
+  };
 
-  getBin() {
+  getBin = () => {
     let config = this.getConfig();
     let bin = config.bin;
 
@@ -303,5 +303,5 @@ export default class Config {
       bin,
       `package.json#bin must be an object of strings or a string. See "${this.filePath}"`
     );
-  }
+  };
 }
