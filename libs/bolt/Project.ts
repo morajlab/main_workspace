@@ -35,13 +35,13 @@ const taskWrapper = (task: Task, bail?: boolean): InternalTask => {
 }*/
 
 export default class Project {
-  pkg;
+  pkg: Package;
 
-  constructor(pkg) {
+  constructor(pkg: Package) {
     this.pkg = pkg;
   }
 
-  static init = async (cwd) => {
+  static init = async (cwd: string) => {
     let filePath = await Config.getProjectConfig(cwd);
 
     if (!filePath)
@@ -88,8 +88,14 @@ export default class Project {
     return packages;
   };
 
-  getDependencyGraph = async (packages, excludedDependencyTypes) => {
-    let graph = new Map();
+  getDependencyGraph = async (
+    packages: Package[],
+    excludedDependencyTypes: BoltTypes.configDependencyType[] | void
+  ) => {
+    let graph: Map<
+      string,
+      { pkg: Package; dependencies: string[] }
+    > = new Map();
     let queue = [this.pkg];
     let packagesByName = { [this.pkg.getName()]: this.pkg };
     let valid = true;
@@ -102,7 +108,9 @@ export default class Project {
     for (let pkg of queue) {
       let name = pkg.config.getName();
       let dependencies = [];
-      let allDependencies = pkg.getAllDependencies(excludedDependencyTypes);
+      let allDependencies = pkg.getAllDependencies(
+        excludedDependencyTypes as any
+      );
 
       for (let [depName, depVersion] of allDependencies) {
         let match = packagesByName[depName];

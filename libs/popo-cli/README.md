@@ -28,28 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`popo hello [FILE]`](#popo-hello-file)
 * [`popo help [COMMAND]`](#popo-help-command)
-
-## `popo hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ popo hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ popo hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/morteza-jamali/popo-cli/blob/v0.0.0/src/commands/hello.ts)_
+* [`popo install`](#popo-install)
 
 ## `popo help [COMMAND]`
 
@@ -67,4 +47,18 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `popo install`
+
+Packages install command description
+
+```
+USAGE
+  $ popo install
+
+OPTIONS
+  --root=root
+```
+
+_See code: [src/commands/install.ts](https://github.com/morteza-jamali/popo-cli/blob/v0.0.0/src/commands/install.ts)_
 <!-- commandsstop -->
