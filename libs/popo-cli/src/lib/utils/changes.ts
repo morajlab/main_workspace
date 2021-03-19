@@ -2,7 +2,7 @@ import Repository from '../Repository';
 import Package from '../Package';
 import git from '../utils/git';
 
-async function getLastVersionCommitForPackage(repo: Repository, pkg: Package) {
+const getLastVersionCommitForPackage = async (repo: Repository, pkg: Package) => {
   let cwd = repo.dir;
   let filePath = pkg.config.filePath;
   let commits = await git.getCommitsToFile(filePath, { cwd });

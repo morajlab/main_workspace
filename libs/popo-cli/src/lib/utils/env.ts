@@ -1,17 +1,17 @@
-import ciParallelVars from 'ci-parallel-vars';
+import ciParallelVars from "ci-parallel-vars";
 
-const VARS = {
+const VARS: any = {
   CI_NODE_TOTAL: ciParallelVars ? ciParallelVars.total : null,
-  CI_NODE_INDEX: ciParallelVars ? ciParallelVars.index : null
+  CI_NODE_INDEX: ciParallelVars ? ciParallelVars.index : null,
 };
 
 const OVERRIDES = new Map();
 
-export function get(name: $Keys<typeof VARS>) {
+export function get(name: any) {
   return OVERRIDES.has(name) ? OVERRIDES.get(name) : VARS[name];
 }
 
-export function __override<Name: $Keys<typeof VARS>>(name: Name, value: any) {
+export function __override(name: any, value: any) {
   OVERRIDES.set(name, value);
 }
 

@@ -1,4 +1,5 @@
 import pkgUp from 'pkg-up';
+
 const boltPkgPath = pkgUp.sync(__dirname);
 const boltPkg = require(boltPkgPath);
 

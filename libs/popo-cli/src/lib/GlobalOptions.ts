@@ -1,24 +1,27 @@
-import * as options from './utils/options';
-
 export type GlobalOptions = {
-  disableCmdPrefix?: boolean
+  disableCmdPrefix?: boolean;
 };
+
 class GlobalOptionsStore {
-  store = {
-    disableCmdPrefix: undefined
+  store: any = {
+    disableCmdPrefix: undefined,
   };
-  set(key: $Keys<GlobalOptions>, value: $PropertyType<GlobalOptions, key>) {
+
+  set(key: any, value: any) {
     this.store[key] = value;
   }
-  get(key: $Keys<GlobalOptions>): $PropertyType<GlobalOptions, key> {
+
+  get(key: any): any {
     return this.store[key];
   }
+
   getAll(): GlobalOptions {
     return this.store;
   }
-  setFromFlags(flags: options.Flags) {
+
+  setFromFlags(flags: any) {
     if (flags.prefix === false) {
-      this.set('disableCmdPrefix', true);
+      this.set("disableCmdPrefix", true);
     }
   }
 }

@@ -1,27 +1,24 @@
-// @flow
-import * as path from 'path';
-import includes from 'array-includes';
-import semver from 'semver';
-import Package from './Package';
-import Config from './Config';
-import type { configDependencyType, SpawnOpts, FilterOpts } from './types';
-import * as fs from './utils/fs';
-import * as logger from './utils/logger';
-import {
+import { dirname, join } from "path";
+//import includes from 'array-includes';
+import semver from "semver";
+import Package from "./Package";
+import Config from "./Config";
+import { stat } from "./utils/fs";
+import { error as loggerError } from "./utils/logger";
+/*import {
   promiseWrapper,
   promiseWrapperSuccess,
-  type PromiseResult,
-  type PromiseFailure
+  PromiseResult,
+  PromiseFailure
 } from './utils/promiseWrapper';
-import * as messages from './utils/messages';
-import { BoltError } from './utils/errors';
-import * as globs from './utils/globs';
-import taskGraphRunner from 'task-graph-runner';
-import minimatch from 'minimatch';
+import * as messages from './utils/messages';*/
+import { BoltError } from "./utils/errors";
+import { findWorkspaces } from "./utils/globs";
+/*import taskGraphRunner from 'task-graph-runner';
 import * as env from './utils/env';
-import chunkd from 'chunkd';
+import chunkd from 'chunkd';*/
 
-type GenericTask<T> = (pkg: Package) => Promise<T>;
+/*type GenericTask<T> = (pkg: Package) => Promise<T>;
 
 type TaskResult = PromiseResult<mixed> | void;
 
@@ -29,13 +26,13 @@ type InternalTask = GenericTask<TaskResult>;
 
 export type Task = GenericTask<mixed>;
 
-function taskWrapper(task: Task, bail?: boolean): InternalTask {
+const taskWrapper = (task: Task, bail?: boolean): InternalTask => {
   if (bail === undefined || bail) {
     return promiseWrapperSuccess(task);
-  } else {
-    return promiseWrapper(task);
   }
-}
+
+  return promiseWrapper(task);
+}*/
 
 export default class Project {
   pkg: Package;
@@ -46,9 +43,12 @@ export default class Project {
 
   static async init(cwd: string) {
     let filePath = await Config.getProjectConfig(cwd);
+
     if (!filePath)
       throw new BoltError(`Unable to find root of project in ${cwd}`);
+
     let pkg = await Package.init(filePath);
+
     return new Project(pkg);
   }
 
@@ -57,26 +57,27 @@ export default class Project {
     let packages = [];
 
     for (let item of queue) {
-      let cwd = path.dirname(item.filePath);
+      let cwd = dirname(item.filePath);
       let patterns = item.getWorkspacesConfig();
-      let matchedPaths = await globs.findWorkspaces(cwd, patterns);
+      let matchedPaths = await findWorkspaces(cwd, patterns);
 
       for (let matchedPath of matchedPaths) {
-        let dir = path.join(cwd, matchedPath);
-        let stats = await fs.stat(dir);
+        let dir = join(cwd, matchedPath);
+        let stats = await stat(dir);
+
         if (!stats.isDirectory()) continue;
 
-        let filePath = path.join(dir, 'package.json');
+        let filePath = join(dir, "package.json");
         let pkg;
+
         try {
           pkg = await Package.init(filePath);
-        } catch (err) {
-          if (err instanceof BoltError) {
-            // skip cases where unable to initialize package and bolt error was throw
-            // this is typically because the package.json was not found
+        } catch (error) {
+          if (error instanceof BoltError) {
             continue;
           }
-          throw err;
+
+          throw error;
         }
 
         queue.push(pkg);
@@ -88,12 +89,12 @@ export default class Project {
   }
 
   async getDependencyGraph(
-    packages: Array<Package>,
-    excludedDependencyTypes?: Array<configDependencyType> | void
+    packages: Package[],
+    excludedDependencyTypes?: BoltTypes.configDependencyType[] | void
   ) {
     let graph: Map<
       string,
-      { pkg: Package, dependencies: Array<string> }
+      { pkg: Package; dependencies: string[] }
     > = new Map();
     let queue = [this.pkg];
     let packagesByName = { [this.pkg.getName()]: this.pkg };
@@ -107,26 +108,30 @@ export default class Project {
     for (let pkg of queue) {
       let name = pkg.config.getName();
       let dependencies = [];
-      let allDependencies = pkg.getAllDependencies(excludedDependencyTypes);
+      let allDependencies = pkg.getAllDependencies(
+        excludedDependencyTypes as any
+      );
 
       for (let [depName, depVersion] of allDependencies) {
         let match = packagesByName[depName];
+
         if (!match) continue;
 
-        let actual = depVersion;
         let expected = match.config.getVersion();
 
-        // Workspace dependencies only need to semver satisfy, not '==='
         if (!semver.satisfies(expected, depVersion)) {
           valid = false;
-          logger.error(
-            messages.packageMustDependOnCurrentVersion(
+
+          loggerError(
+            "packageMustDependOnCurrentVersion"
+            /*messages.packageMustDependOnCurrentVersion(
               name,
               depName,
               expected,
               depVersion
-            )
+            )*/
           );
+
           continue;
         }
 
@@ -137,11 +142,11 @@ export default class Project {
     }
 
     return { graph, valid };
-  }
+  } /*
 
   async getDependentsGraph(
     packages: Array<Package>,
-    excludedDepTypes?: Array<configDependencyType>
+    excludedDepTypes?: Array<BoltTypes.configDependencyType>
   ) {
     let graph = new Map();
     let { valid, graph: dependencyGraph } = await this.getDependencyGraph(
@@ -149,9 +154,7 @@ export default class Project {
       excludedDepTypes
     );
 
-    let dependentsLookup: {
-      [string]: { pkg: Package, dependents: Array<string> }
-    } = {};
+    let dependentsLookup: any = {};
 
     packages.forEach(pkg => {
       dependentsLookup[pkg.config.getName()] = {
@@ -162,15 +165,14 @@ export default class Project {
 
     packages.forEach(pkg => {
       let dependent = pkg.getName();
-      let valFromDependencyGraph = dependencyGraph.get(dependent) || {};
+      let valFromDependencyGraph: any = dependencyGraph.get(dependent) || {};
       let dependencies = valFromDependencyGraph.dependencies || [];
 
-      dependencies.forEach(dependency => {
+      dependencies.forEach((dependency: any) => {
         dependentsLookup[dependency].dependents.push(dependent);
       });
     });
 
-    // can't use Object.entries here as the flow type for it is Array<[string, mixed]>;
     Object.keys(dependentsLookup).forEach(key => {
       graph.set(key, dependentsLookup[key]);
     });
@@ -180,11 +182,12 @@ export default class Project {
 
   async runPackageTasks(
     packages: Array<Package>,
-    spawnOpts: SpawnOpts,
+    spawnOpts: BoltTypes.SpawnOpts,
     task: Task
   ) {
     const wrappedTask = taskWrapper(task, spawnOpts.bail);
     let results: TaskResult[];
+
     if (spawnOpts.orderMode === 'serial') {
       results = await this.runPackageTasksSerial(packages, wrappedTask);
     } else if (spawnOpts.orderMode === 'parallel') {
@@ -198,13 +201,16 @@ export default class Project {
         spawnOpts.excludeFromGraph
       );
     }
+
     const taskFailures: Array<PromiseFailure> = (results.filter(
       r => r && r.status === 'error'
-    ): any);
+    ) as any);
+
     if (taskFailures.length > 0) {
       const failuresWithMsg = taskFailures
         .map(r => r.error && r.error.message)
         .filter(Boolean);
+
       throw new BoltError(
         messages.taskFailed(taskFailures.length, failuresWithMsg)
       );
@@ -216,9 +222,11 @@ export default class Project {
     task: GenericTask<T>
   ): Promise<Array<T>> {
     const results: Array<T> = [];
+
     for (let pkg of packages) {
       results.push(await task(pkg));
     }
+
     return results;
   }
 
@@ -233,9 +241,7 @@ export default class Project {
     packages: Array<Package>,
     task: GenericTask<T>
   ): Promise<Array<T>> {
-    packages = packages.sort((a, b) => {
-      return a.filePath.localeCompare(b.filePath, [], { numeric: true });
-    });
+    packages = packages.sort((a, b) => a.filePath.localeCompare(b.filePath, [], { numeric: true }));
 
     let index = env.get('CI_NODE_INDEX');
     let total = env.get('CI_NODE_TOTAL');
@@ -243,6 +249,7 @@ export default class Project {
     if (typeof index === 'number' && typeof total === 'number') {
       let all = packages.length;
       packages = chunkd(packages, index, total);
+
       logger.info(
         messages.taskRunningAcrossCINodes(total, packages.length, all)
       );
@@ -254,9 +261,9 @@ export default class Project {
   async runPackageTasksGraphParallel<T>(
     packages: Array<Package>,
     task: GenericTask<T>,
-    excludeDepTypesFromGraph: Array<configDependencyType> | void
+    excludeDepTypesFromGraph: Array<BoltTypes.configDependencyType> | void
   ): Promise<Array<T | void>> {
-    let { graph: dependentsGraph, valid } = await this.getDependencyGraph(
+    let { graph: dependentsGraph } = await this.getDependencyGraph(
       packages,
       excludeDepTypesFromGraph
     );
@@ -270,8 +277,9 @@ export default class Project {
     let results = await taskGraphRunner({
       graph,
       force: true,
-      task: async pkgName => {
+      task: async (pkgName: any) => {
         let pkg = this.getPackageByName(packages, pkgName);
+
         if (pkg) {
           return task(pkg);
         }
@@ -297,7 +305,7 @@ export default class Project {
     return packages.find(pkg => pkg.getName() === pkgName);
   }
 
-  filterPackages(packages: Array<Package>, opts: FilterOpts) {
+  filterPackages(packages: Array<Package>, opts: BoltTypes.FilterOpts) {
     let relativeDir = (pkg: Package) => path.relative(this.pkg.dir, pkg.dir);
 
     let packageNames = packages.map(pkg => pkg.getName());
@@ -326,5 +334,5 @@ export default class Project {
     }
 
     return filteredPackages;
-  }
+  }*/
 }

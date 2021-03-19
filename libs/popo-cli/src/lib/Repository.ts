@@ -1,4 +1,3 @@
-// @flow
 import * as git from './utils/git';
 import { BoltError } from './utils/errors';
 

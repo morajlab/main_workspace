@@ -7,10 +7,8 @@
     "outDir": "lib",
     "rootDir": "src",
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "types": ["node"]
   },
-  "include": [
-    "src/**/*",
-    "types"
-  ]
+  "include": ["src/**/*", "types/*"]
 }

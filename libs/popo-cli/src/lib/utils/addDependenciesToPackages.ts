@@ -1,34 +1,33 @@
-import semver from 'semver';
-import Project from '../Project';
-import Package from '../Package';
-import type { Dependency, configDependencyType } from '../types';
-import messages from './messages';
-import { BoltError } from './errors';
-import * as logger from './logger';
-import yarn from './yarn';
-import symlinkPackageDependencies from './symlinkPackageDependencies';
-import updateWorkspaceDependencies from '../functions/updateWorkspaceDependencies';
+import semver from "semver";
+import Project from "../Project";
+import Package from "../Package";
+import messages from "./messages";
+import { BoltError } from "./errors";
+import * as logger from "./logger";
+import yarn from "./yarn";
+import symlinkPackageDependencies from "./symlinkPackageDependencies";
+import updateWorkspaceDependencies from "../functions/updateWorkspaceDependencies";
 
-export default async function addDependenciesToPackage(
+const addDependenciesToPackage = async (
   project: Project,
   pkg: Package,
-  dependencies: Array<Dependency>,
-  type: configDependencyType = 'dependencies'
-) {
+  dependencies: Array<BoltTypes.Dependency>,
+  type: BoltTypes.configDependencyType = "dependencies"
+) => {
   let packages = await project.getPackages();
   let projectDependencies = project.pkg.getAllDependencies();
   let pkgDependencies = pkg.getAllDependencies();
   let { graph: depGraph } = await project.getDependencyGraph(packages);
   let inProjectRoot = pkg.isSamePackage(project.pkg);
 
-  let dependencyNames = dependencies.map(dep => dep.name);
-  let externalDeps = dependencies.filter(dep => !depGraph.has(dep.name));
-  let internalDeps = dependencies.filter(dep => depGraph.has(dep.name));
+  let dependencyNames = dependencies.map((dep) => dep.name);
+  let externalDeps = dependencies.filter((dep) => !depGraph.has(dep.name));
+  let internalDeps = dependencies.filter((dep) => depGraph.has(dep.name));
 
   let externalDepsToInstallForProject = externalDeps.filter(
     // If we are in the project, always (re)install external deps to keep same behaviour as yarn
     // Otherwise, if in a workspace, only project install if it isn't already installed
-    dep => inProjectRoot || !projectDependencies.has(dep.name)
+    (dep) => inProjectRoot || !projectDependencies.has(dep.name)
   );
   if (externalDepsToInstallForProject.length !== 0) {
     await yarn.add(project.pkg, externalDepsToInstallForProject, type);
@@ -43,12 +42,12 @@ export default async function addDependenciesToPackage(
     }
 
     // Update all workspace versions
-    const depsToUpgrade = externalDeps.reduce((prev, dep) => {
+    const depsToUpgrade = externalDeps.reduce((prev: any, dep: any) => {
       prev[dep.name] = project.pkg.getDependencyVersionRange(dep.name);
       return prev;
     }, {});
     await updateWorkspaceDependencies(depsToUpgrade, {
-      cwd: project.pkg.dir
+      cwd: project.pkg.dir,
     });
     return true;
   }
@@ -73,7 +72,7 @@ export default async function addDependenciesToPackage(
   }
 
   for (let dep of internalDeps) {
-    let dependencyPkg = (depGraph.get(dep.name) || {}).pkg;
+    let dependencyPkg: any = (depGraph.get(dep.name) || {}).pkg;
     let internalVersion = dependencyPkg.config.getVersion();
     // If no version is requested, default to caret at the current version
     let requestedVersion = dep.version || `^${internalVersion}`;
@@ -96,7 +95,16 @@ export default async function addDependenciesToPackage(
 
   // Now that all the new stuff is there, do this one more time to get the updates
   let packagesFinal = await project.getPackages();
-  let { graph: depGraphFinal } = await project.getDependencyGraph(packagesFinal);
+  let { graph: depGraphFinal } = await project.getDependencyGraph(
+    packagesFinal
+  );
 
-  await symlinkPackageDependencies(project, pkg, dependencyNames, depGraphFinal);
-}
+  await symlinkPackageDependencies(
+    project,
+    pkg,
+    dependencyNames,
+    depGraphFinal
+  );
+};
+
+export default addDependenciesToPackage;

@@ -1,79 +1,74 @@
-// @flow
-import includes from 'array-includes';
-import projectBinPath from 'project-bin-path';
-import * as path from 'path';
-import type { Dependency, configDependencyType } from '../types';
-import type Package from '../Package';
-import Project from '../Project';
-import * as processes from './processes';
-import * as fs from '../utils/fs';
-import * as logger from '../utils/fs';
-import { DEPENDENCY_TYPE_FLAGS_MAP, BOLT_VERSION } from '../constants';
+import includes from "array-includes";
+import projectBinPath from "project-bin-path";
+import { join, relative } from "path";
+import Package from "../Package";
+import Project from "../Project";
+import { spawn } from "./processes";
+import { readdirSafe } from "../utils/fs";
+//import * as logger from '../utils/fs';
+import { DEPENDENCY_TYPE_FLAGS_MAP, BOLT_VERSION } from "../constants";
 
-function getLocalBinPath(): Promise<string> {
-  return projectBinPath(__dirname);
-}
+const getLocalBinPath = (): Promise<string> =>
+  projectBinPath(
+    __dirname
+  ); /*
 
-function depTypeToFlag(depType) {
+function depTypeToFlag(depType: any) {
   let flag = Object.keys(DEPENDENCY_TYPE_FLAGS_MAP).find(
-    key => DEPENDENCY_TYPE_FLAGS_MAP[key] === depType
+    key => (DEPENDENCY_TYPE_FLAGS_MAP as any)[key] === depType
   );
 
   return flag ? `--${flag}` : flag;
 }
-
-async function getEnvWithUserAgents() {
+*/
+const getEnvWithUserAgents = async () => {
   let yarnUserAgent = await userAgent();
   let boltUserAgent = `bolt/${BOLT_VERSION} ${yarnUserAgent}`;
 
   return {
     ...process.env,
     npm_config_user_agent: boltUserAgent,
-    bolt_config_user_agent: boltUserAgent
+    bolt_config_user_agent: boltUserAgent,
   };
-}
+};
 
-/* Add the relevant *_config_user_agent env vars to all spawned yarn processes */
-async function spawnWithUserAgent(
+const spawnWithUserAgent = async (
   cmd: string,
   args: string[],
-  opts?: processes.SpawnOptions
-) {
-  return processes.spawn(cmd, args, {
+  opts?: any //processes.SpawnOptions
+) =>
+  spawn(cmd, args, {
     ...opts,
     env: {
       ...(await getEnvWithUserAgents()),
-      ...(opts && opts.env)
-    }
+      ...(opts && opts.env),
+    },
   });
-}
 
-export type LockFileMode = 'default' | 'pure' | 'frozen';
-
-export async function install(
+export const install = async (
   cwd: string,
-  lockfileMode: LockFileMode = 'default'
-) {
-  let localYarn = path.join(await getLocalBinPath(), 'yarn');
+  lockfileMode: BoltTypes.LockFileMode = "default"
+) => {
+  let localYarn = join(await getLocalBinPath(), "yarn");
   let installFlags = [];
 
   switch (lockfileMode) {
-    case 'frozen':
-      installFlags.push('--frozen-lockfile');
+    case "frozen":
+      installFlags.push("--frozen-lockfile");
       break;
-    case 'pure':
-      installFlags.push('--pure-lockfile');
+    case "pure":
+      installFlags.push("--pure-lockfile");
       break;
     default:
       break;
   }
 
-  await spawnWithUserAgent(localYarn, ['install', ...installFlags], {
+  await spawnWithUserAgent(localYarn, ["install", ...installFlags], {
     cwd,
     tty: true,
-    useBasename: true
+    useBasename: true,
   });
-}
+}; /*
 
 export async function add(
   pkg: Package,
@@ -129,42 +124,40 @@ export async function upgrade(
     tty: true,
     useBasename: true
   });
-}
+}*/
 
-export async function run(
-  pkg: Package,
-  script: string,
-  args: Array<string> = []
-) {
-  let project = await Project.init(pkg.dir);
-  let localYarn = path.join(await getLocalBinPath(), 'yarn');
-  // We use a relative path because the absolute paths are very long and noisy in logs
-  let localYarnRelative = path.relative(pkg.dir, localYarn);
-  let spawnArgs = ['run', '-s', script];
+export async function run(pkg: Package, script: string, args: string[] = []) {
+  //let project = await Project.init(pkg.dir);
+  await Project.init(pkg.dir);
+  let localYarn = join(await getLocalBinPath(), "yarn");
+  let localYarnRelative = relative(pkg.dir, localYarn);
+  let spawnArgs = ["run", "-s", script];
 
   if (args.length) {
     spawnArgs = spawnArgs.concat(args);
   }
+
   await spawnWithUserAgent(localYarnRelative, spawnArgs, {
     cwd: pkg.dir,
     pkg: pkg,
     tty: true,
-    useBasename: true
+    useBasename: true,
   });
 }
 
-export async function runIfExists(
+export const runIfExists = async (
   pkg: Package,
   script: string,
-  args: Array<string> = []
-) {
+  args: string[] = []
+) => {
   let scriptExists = await getScript(pkg, script);
+
   if (scriptExists) {
     await run(pkg, script, args);
   }
-}
+};
 
-export async function getScript(pkg: Package, script: string) {
+export const getScript = async (pkg: Package, script: string) => {
   let result = null;
   let scripts = pkg.config.getScripts();
 
@@ -173,7 +166,7 @@ export async function getScript(pkg: Package, script: string) {
   }
 
   if (!result) {
-    let bins = await fs.readdirSafe(pkg.nodeModulesBin);
+    let bins = await readdirSafe(pkg.nodeModulesBin);
 
     if (includes(bins, script)) {
       result = script;
@@ -181,7 +174,7 @@ export async function getScript(pkg: Package, script: string) {
   }
 
   return result;
-}
+}; /*
 
 export async function remove(dependencies: Array<string>, cwd: string) {
   let localYarn = path.join(await getLocalBinPath(), 'yarn');
@@ -212,21 +205,21 @@ export async function info(cwd: string, spawnArgs: Array<string> = []) {
     tty: true
   });
 }
+*/
+export const userAgent = async () => {
+  let localYarn = join(await getLocalBinPath(), "yarn");
 
-export async function userAgent() {
-  let localYarn = path.join(await getLocalBinPath(), 'yarn');
-
-  let { stdout: yarnUserAgent } = await processes.spawn(
+  let { stdout: yarnUserAgent } = await spawn(
     localYarn,
-    ['config', 'get', 'user-agent'],
+    ["config", "get", "user-agent"],
     {
       tty: false,
-      silent: true
+      silent: true,
     }
   );
 
-  return yarnUserAgent.replace(/\n/g, '');
-}
+  return yarnUserAgent.replace(/\n/g, "");
+}; /*
 
 export async function globalCli(
   command: string = '',
@@ -246,4 +239,4 @@ export async function globalCli(
   await spawnWithUserAgent('yarn', spawnArgs, {
     tty: true
   });
-}
+}*/

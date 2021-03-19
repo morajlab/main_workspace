@@ -1,21 +1,21 @@
 export const handleAllSignals = (cleanUp: () => void) => {
-  process.on('exit', code => {
+  process.on("exit", (code: any) => {
     cleanUp();
   });
-  process.on('SIGTERM', (code: any) => {
-    cleanUp();
-    process.exit(code);
-  });
-  process.on('SIGINT', (code: any) => {
+  process.on("SIGTERM", (code: any) => {
     cleanUp();
     process.exit(code);
   });
-  process.on('unhandledRejection', err => {
+  process.on("SIGINT", (code: any) => {
+    cleanUp();
+    process.exit(code);
+  });
+  process.on("unhandledRejection", (err) => {
     cleanUp();
     process.exit(1);
   });
-  process.on('uncaughtException', err => {
+  process.on("uncaughtException", (err) => {
     cleanUp();
     process.exit(1);
   });
-}
+};

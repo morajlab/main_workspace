@@ -51,6 +51,7 @@
     "yarn": "^1.9.4"
   },
   "devDependencies": {
+    "@types/pkg-up": "latest",
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.15",

@@ -1,16 +1,16 @@
-import crossSpawn from 'cross-spawn';
-import * as logger from './logger';
-import * as cleanUp from './cleanUp';
-import type Package from '../Package';
-import type Project from '../Project';
-import pLimit from 'p-limit';
-import os from 'os';
-import path from 'path';
-import { globalOptions, GlobalOptions } from '../GlobalOptions';
+import crossSpawn from "cross-spawn";
+import { stdout as loggerStdout, stderr as loggerStderr } from "./logger";
+/*import * as cleanUp from './cleanUp';
+import Package from '../Package';
+import type Project from '../Project';*/
+import pLimit from "p-limit";
+import { cpus } from "os";
+import { basename } from "path";
+import { globalOptions } from "../GlobalOptions";
 
-const limit = pLimit(os.cpus().length);
+const limit = pLimit(cpus().length);
 const processes: any = new Set();
-
+/*
 export function handleSignals() {
   cleanUp.handleAllSignals(() => {
     for (let child of processes) {
@@ -18,7 +18,7 @@ export function handleSignals() {
     }
     processes.clear();
   });
-}
+}*/
 
 export class ChildProcessError extends Error {
   code: number;
@@ -34,7 +34,7 @@ export class ChildProcessError extends Error {
     this.stdout = stdout;
     this.stderr = stderr;
   }
-}
+} /*
 
 export type SpawnOptions = {
   ...GlobalOptions,
@@ -44,35 +44,32 @@ export type SpawnOptions = {
   tty?: boolean,
   useBasename?: boolean,
   env?: { [key: string]: ?string }
-};
+};*/
 
-export function spawn(
+export const spawn = (
   cmd: string,
-  args: Array<string>,
-  opts: SpawnOptions = {}
-) {
-  return limit(
+  args: string[],
+  opts: any = {} //SpawnOptions = {}
+) =>
+  limit(
     () =>
       new Promise((resolve, reject) => {
-        let stdoutBuf = Buffer.from('');
-        let stderrBuf = Buffer.from('');
+        let stdoutBuf = Buffer.from("");
+        let stderrBuf = Buffer.from("");
         let isTTY = process.stdout.isTTY && opts.tty;
-        let cmdDisplayName = opts.useBasename ? path.basename(cmd) : cmd;
-
+        let cmdDisplayName = opts.useBasename ? basename(cmd) : cmd;
         let displayCmd =
-          opts.disableCmdPrefix != null
-            ? opts.disableCmdPrefix
-            : globalOptions.get('disableCmdPrefix');
-        let cmdStr = displayCmd ? '' : cmdDisplayName + ' ' + args.join(' ');
+          opts.disableCmdPrefix ?? globalOptions.get("disableCmdPrefix");
+        let cmdStr = displayCmd ? "" : `${cmdDisplayName} ` + args.join(" ");
 
-        let spawnOpts: child_process$spawnOpts = {
+        let spawnOpts: any /*child_process$spawnOpts*/ = {
           cwd: opts.cwd,
-          env: opts.env || process.env
+          env: opts.env || process.env,
         };
 
         if (isTTY) {
           spawnOpts.shell = true;
-          spawnOpts.stdio = 'inherit';
+          spawnOpts.stdio = "inherit";
         }
 
         let child = crossSpawn(cmd, args, spawnOpts);
@@ -80,9 +77,9 @@ export function spawn(
         processes.add(child);
 
         if (child.stdout) {
-          child.stdout.on('data', data => {
+          child.stdout.on("data", (data: any) => {
             if (!opts.silent) {
-              logger.stdout(cmdStr, data, opts.pkg);
+              loggerStdout(cmdStr, data, opts.pkg);
             }
 
             stdoutBuf = Buffer.concat([stdoutBuf, data]);
@@ -90,17 +87,18 @@ export function spawn(
         }
 
         if (child.stderr) {
-          child.stderr.on('data', data => {
+          child.stderr.on("data", (data: any) => {
             if (!opts.silent) {
-              logger.stderr(cmdStr, data, opts.pkg);
+              loggerStderr(cmdStr, data, opts.pkg);
             }
+
             stderrBuf = Buffer.concat([stderrBuf, data]);
           });
         }
 
-        child.on('error', reject);
+        child.on("error", reject);
 
-        child.on('close', code => {
+        child.on("close", (code: any) => {
           let stdout = stdoutBuf.toString();
           let stderr = stderrBuf.toString();
 
@@ -114,4 +112,3 @@ export function spawn(
         });
       })
   );
-}

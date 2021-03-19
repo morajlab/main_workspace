@@ -1,5 +1,3 @@
-// @flow
-
 import Project from '../Project';
 import Package from '../Package';
 import type { Dependency } from '../types';
@@ -42,9 +40,9 @@ export default async function upgradeDependenciesInPackage(
   let newProject = await Project.init(project.pkg.dir);
   // get the new versions of everything from the project config
   let newProjectDependencies = newProject.pkg.getAllDependencies();
-  let depsToUpgrade = {};
+  let depsToUpgrade: any = {};
 
-  newProjectDependencies.forEach((value, key) => {
+  newProjectDependencies.forEach((value: any, key: any) => {
     depsToUpgrade[key] = value;
   });
 

@@ -1,22 +1,21 @@
-import multimatch from 'multimatch';
-import globby from 'globby';
-import * as path from 'path';
+import multimatch from "multimatch";
+import globby from "globby";
 
-function matchGlobs(paths: Array<string>, patterns: Array<string>) {
+function matchGlobs(paths: string[], patterns: string[]) {
   return multimatch(paths, patterns);
 }
 
-function findGlobs(cwd: string, patterns: Array<string>) {
+function findGlobs(cwd: string, patterns: string[]) {
   return globby(patterns, { cwd });
 }
 
-export function matchWorkspaces(paths: Array<string>, patterns: Array<string>) {
+export function matchWorkspaces(paths: string[], patterns: string[]) {
   return matchGlobs(paths, patterns);
 }
 
-export function findWorkspaces(cwd: string, patterns: Array<string>) {
+export function findWorkspaces(cwd: string, patterns: string[]) {
   return findGlobs(cwd, patterns);
-}
+} /*
 
 export function matchOnlyAndIgnore(
   paths: Array<string>,
@@ -26,4 +25,4 @@ export function matchOnlyAndIgnore(
   let onlyPattern = only || '**';
   let ignorePattern = ignore ? `!${ignore}` : '';
   return matchGlobs(paths, [onlyPattern, ignorePattern]);
-}
+}*/
