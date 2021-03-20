@@ -1,21 +1,20 @@
 import multimatch from "multimatch";
 import globby from "globby";
 
-function matchGlobs(paths: string[], patterns: string[]) {
-  return multimatch(paths, patterns);
-}
+const matchGlobs = (paths: string[], patterns: string[]) =>
+  multimatch(paths, patterns);
 
-function findGlobs(cwd: string, patterns: string[]) {
-  return globby(patterns, { cwd });
-}
+const findGlobs = (cwd: string, patterns: string[]) =>
+  globby(patterns, { cwd });
 
-export function matchWorkspaces(paths: string[], patterns: string[]) {
-  return matchGlobs(paths, patterns);
-}
+export const matchWorkspaces = (paths: string[], patterns: string[]) =>
+  matchGlobs(paths, patterns);
 
-export function findWorkspaces(cwd: string, patterns: string[]) {
-  return findGlobs(cwd, patterns);
-} /*
+export const findWorkspaces = (cwd: string, patterns: string[]) =>
+  findGlobs(
+    cwd,
+    patterns
+  ); /*
 
 export function matchOnlyAndIgnore(
   paths: Array<string>,

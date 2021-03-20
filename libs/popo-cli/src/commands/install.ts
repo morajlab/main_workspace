@@ -24,7 +24,10 @@ export default class InstallCommand extends Command {
     let project = await Project.init(cwd);
     let packages = await project.getPackages();
 
-    //    logger.info(messages.validatingProject(), { emoji: "🔎", prefix: false });
+    loggerInfo("validatingProject" /*messages.validatingProject()*/, {
+      emoji: "🔎",
+      prefix: false,
+    });
 
     let projectIsValid = await validateProject(project);
 
@@ -57,9 +60,14 @@ export default class InstallCommand extends Command {
     }
 
     await Promise.all(
-      packages.map(async (pkg) => {
+      packages.map(async (pkg: any) => {
         let dependencies = Array.from(pkg.getAllDependencies().keys());
-        await symlinkPackageDependencies(project, pkg, dependencies, graph);
+        await symlinkPackageDependencies(
+          project,
+          pkg,
+          dependencies as string[],
+          graph
+        );
       })
     );
 

@@ -22,6 +22,7 @@ declare module "project-bin-path";
 declare module "sort-object";
 declare module "chunkd";
 declare module "task-graph-runner";
+declare module "globby";
 
 declare namespace BoltTypes {
   type DependencySet = {

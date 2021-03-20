@@ -54,7 +54,7 @@ export default class Project {
 
   getPackages = async () => {
     let queue = [this.pkg];
-    let packages = [];
+    let packages: any = [];
 
     for (let item of queue) {
       let cwd = dirname(item.filePath);
