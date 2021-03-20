@@ -1,1 +1,0 @@
-{"version":"0.0.0","commands":{"install":{"id":"install","description":"Packages install command description","pluginName":"popo-cli","pluginType":"core","aliases":[],"flags":{"root":{"name":"root","type":"option"}},"args":[]}}}
