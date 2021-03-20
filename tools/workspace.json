@@ -43,11 +43,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/nx"],
+          "outputs": [
+            "build/packages/nx"
+          ],
           "options": {
             "commands": [
               {
@@ -87,7 +91,9 @@
             "jestConfig": "packages/tao/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/tao"]
+          "outputs": [
+            "coverage/packages/tao"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -126,11 +132,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/tao"],
+          "outputs": [
+            "build/packages/tao"
+          ],
           "options": {
             "commands": [
               {
@@ -172,7 +182,9 @@
             "jestConfig": "packages/devkit/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/devkit"]
+          "outputs": [
+            "coverage/packages/devkit"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -211,11 +223,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/devkit"],
+          "outputs": [
+            "build/packages/devkit"
+          ],
           "options": {
             "commands": [
               {
@@ -254,7 +270,9 @@
             "jestConfig": "packages/workspace/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/workspace"]
+          "outputs": [
+            "coverage/packages/workspace"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -298,11 +316,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/workspace"],
+          "outputs": [
+            "build/packages/workspace"
+          ],
           "options": {
             "commands": [
               {
@@ -347,7 +369,9 @@
             "jestConfig": "packages/web/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/web"]
+          "outputs": [
+            "coverage/packages/web"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -391,11 +415,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/web"],
+          "outputs": [
+            "build/packages/web"
+          ],
           "options": {
             "commands": [
               {
@@ -435,7 +463,9 @@
             "jestConfig": "packages/cypress/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/cypress"]
+          "outputs": [
+            "coverage/packages/cypress"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -474,11 +504,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/cypress"],
+          "outputs": [
+            "build/packages/cypress"
+          ],
           "options": {
             "commands": [
               {
@@ -517,7 +551,9 @@
             "jestConfig": "packages/jest/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/jest"]
+          "outputs": [
+            "coverage/packages/jest"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -556,11 +592,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/jest"],
+          "outputs": [
+            "build/packages/jest"
+          ],
           "options": {
             "commands": [
               {
@@ -599,7 +639,9 @@
             "jestConfig": "packages/storybook/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/storybook"]
+          "outputs": [
+            "coverage/packages/storybook"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -648,11 +690,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/storybook"],
+          "outputs": [
+            "build/packages/storybook"
+          ],
           "options": {
             "commands": [
               {
@@ -692,7 +738,9 @@
             "jestConfig": "packages/react/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/react"]
+          "outputs": [
+            "coverage/packages/react"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -741,11 +789,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/react"],
+          "outputs": [
+            "build/packages/react"
+          ],
           "options": {
             "commands": [
               {
@@ -785,7 +837,9 @@
             "jestConfig": "packages/nx-plugin/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/nx-plugin"]
+          "outputs": [
+            "coverage/packages/nx-plugin"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -824,11 +878,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/nx-plugin"],
+          "outputs": [
+            "build/packages/nx-plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -868,7 +926,9 @@
             "jestConfig": "packages/node/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/node"]
+          "outputs": [
+            "coverage/packages/node"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -907,11 +967,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/node"],
+          "outputs": [
+            "build/packages/node"
+          ],
           "options": {
             "commands": [
               {
@@ -951,7 +1015,9 @@
             "jestConfig": "packages/next/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/next"]
+          "outputs": [
+            "coverage/packages/next"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -995,11 +1061,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/next"],
+          "outputs": [
+            "build/packages/next"
+          ],
           "options": {
             "commands": [
               {
@@ -1039,7 +1109,9 @@
             "jestConfig": "packages/nest/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/nest"]
+          "outputs": [
+            "coverage/packages/nest"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1078,11 +1150,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/nest"],
+          "outputs": [
+            "build/packages/nest"
+          ],
           "options": {
             "commands": [
               {
@@ -1122,7 +1198,9 @@
             "jestConfig": "packages/linter/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/linter"]
+          "outputs": [
+            "coverage/packages/linter"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1161,11 +1239,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/linter"],
+          "outputs": [
+            "build/packages/linter"
+          ],
           "options": {
             "commands": [
               {
@@ -1205,7 +1287,9 @@
             "jestConfig": "packages/express/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/express"]
+          "outputs": [
+            "coverage/packages/express"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1244,11 +1328,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/express"],
+          "outputs": [
+            "build/packages/express"
+          ],
           "options": {
             "commands": [
               {
@@ -1288,7 +1376,9 @@
             "jestConfig": "packages/eslint-plugin-nx/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/eslint-plugin-nx"]
+          "outputs": [
+            "coverage/packages/eslint-plugin-nx"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1327,11 +1417,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/eslint-plugin-nx"],
+          "outputs": [
+            "build/packages/eslint-plugin-nx"
+          ],
           "options": {
             "commands": [
               {
@@ -1371,7 +1465,9 @@
             "jestConfig": "packages/create-nx-workspace/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/create-nx-workspace"]
+          "outputs": [
+            "coverage/packages/create-nx-workspace"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1410,11 +1506,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/create-nx-workspace"],
+          "outputs": [
+            "build/packages/create-nx-workspace"
+          ],
           "options": {
             "commands": [
               {
@@ -1457,7 +1557,9 @@
             "jestConfig": "packages/create-nx-plugin/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/create-nx-plugin"]
+          "outputs": [
+            "coverage/packages/create-nx-plugin"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1496,11 +1598,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/create-nx-plugin"],
+          "outputs": [
+            "build/packages/create-nx-plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -1543,7 +1649,9 @@
             "jestConfig": "packages/cli/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/cli"]
+          "outputs": [
+            "coverage/packages/cli"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1582,11 +1690,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/cli"],
+          "outputs": [
+            "build/packages/cli"
+          ],
           "options": {
             "commands": [
               {
@@ -1629,7 +1741,9 @@
             "jestConfig": "packages/angular/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/angular"]
+          "outputs": [
+            "coverage/packages/angular"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -1673,11 +1787,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/angular"],
+          "outputs": [
+            "build/packages/angular"
+          ],
           "options": {
             "commands": [
               {
@@ -1727,7 +1845,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/cli"]
+          "outputs": [
+            "coverage/e2e/cli"
+          ]
         }
       }
     },
@@ -1743,7 +1863,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/angular"]
+          "outputs": [
+            "coverage/e2e/angular"
+          ]
         }
       }
     },
@@ -1759,7 +1881,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/cypress"]
+          "outputs": [
+            "coverage/e2e/cypress"
+          ]
         }
       }
     },
@@ -1775,7 +1899,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/jest"]
+          "outputs": [
+            "coverage/e2e/jest"
+          ]
         }
       }
     },
@@ -1791,7 +1917,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/linter"]
+          "outputs": [
+            "coverage/e2e/linter"
+          ]
         }
       }
     },
@@ -1807,7 +1935,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/next"]
+          "outputs": [
+            "coverage/e2e/next"
+          ]
         }
       }
     },
@@ -1823,7 +1953,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/node"]
+          "outputs": [
+            "coverage/e2e/node"
+          ]
         }
       }
     },
@@ -1839,7 +1971,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/react"]
+          "outputs": [
+            "coverage/e2e/react"
+          ]
         }
       }
     },
@@ -1855,7 +1989,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/storybook"]
+          "outputs": [
+            "coverage/e2e/storybook"
+          ]
         }
       }
     },
@@ -1871,7 +2007,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/web"]
+          "outputs": [
+            "coverage/e2e/web"
+          ]
         }
       }
     },
@@ -1887,7 +2025,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/workspace"]
+          "outputs": [
+            "coverage/e2e/workspace"
+          ]
         }
       }
     },
@@ -1903,7 +2043,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/nx-plugin"]
+          "outputs": [
+            "coverage/e2e/nx-plugin"
+          ]
         }
       }
     },
@@ -1919,7 +2061,9 @@
             "passWithNoTests": true,
             "runInBand": true
           },
-          "outputs": ["coverage/e2e/gatsby"]
+          "outputs": [
+            "coverage/e2e/gatsby"
+          ]
         }
       }
     },
@@ -1941,7 +2085,9 @@
               "apps/dep-graph-client/src/favicon.ico",
               "apps/dep-graph-client/src/assets"
             ],
-            "styles": ["apps/dep-graph-client/src/styles.scss"],
+            "styles": [
+              "apps/dep-graph-client/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1968,7 +2114,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
@@ -1989,12 +2137,17 @@
               "apps/dep-graph-client/tsconfig.app.json",
               "apps/dep-graph-client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/dep-graph-client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dep-graph-client/**/*"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dep-graph-client"],
+          "outputs": [
+            "coverage/apps/dep-graph-client"
+          ],
           "options": {
             "jestConfig": "apps/dep-graph-client/jest.config.js",
             "passWithNoTests": true
@@ -2019,8 +2172,13 @@
           "executor": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/dep-graph-client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dep-graph-client-e2e/**/*"]
+            "tsConfig": [
+              "apps/dep-graph-client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dep-graph-client-e2e/**/*"
+            ]
           }
         }
       }
@@ -2036,7 +2194,9 @@
             "jestConfig": "packages/gatsby/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/gatsby"]
+          "outputs": [
+            "coverage/packages/gatsby"
+          ]
         },
         "build-base": {
           "executor": "@nrwl/node:package",
@@ -2080,11 +2240,15 @@
               "LICENSE"
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "build": {
           "executor": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/gatsby"],
+          "outputs": [
+            "build/packages/gatsby"
+          ],
           "options": {
             "commands": [
               {
@@ -2109,6 +2273,111 @@
               "packages/gatsby/**/*.spec.jsx",
               "packages/gatsby/**/*.d.ts"
             ]
+          }
+        }
+      }
+    },
+    "popo-cli": {
+      "root": "packages/popo-cli",
+      "sourceRoot": "packages/popo-cli/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/popo-cli/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/popo-cli"
+          ],
+          "options": {
+            "jestConfig": "packages/popo-cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/popo-cli",
+            "tsConfig": "packages/popo-cli/tsconfig.lib.json",
+            "packageJson": "packages/popo-cli/package.json",
+            "main": "packages/popo-cli/src/index.ts",
+            "assets": [
+              "packages/popo-cli/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "popo-core": {
+      "root": "packages/popo-core",
+      "sourceRoot": "packages/popo-core/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/popo-core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/popo-core"
+          ],
+          "options": {
+            "jestConfig": "packages/popo-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/popo-core",
+            "tsConfig": "packages/popo-core/tsconfig.lib.json",
+            "packageJson": "packages/popo-core/package.json",
+            "main": "packages/popo-core/src/index.ts",
+            "assets": [
+              "packages/popo-core/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "bolt": {
+      "root": "packages/bolt",
+      "sourceRoot": "packages/bolt/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/bolt/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/bolt"
+          ],
+          "options": {
+            "jestConfig": "packages/bolt/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

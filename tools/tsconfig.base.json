@@ -41,7 +41,10 @@
       "@nrwl/angular": ["./packages/angular"],
       "@nrwl/angular/*": ["./packages/angular/*"],
       "@nrwl/e2e/utils": ["./e2e/utils"],
-      "@nrwl/e2e/cli": ["./e2e/cli"]
+      "@nrwl/e2e/cli": ["./e2e/cli"],
+      "@popo-tool/cli": ["packages/popo-cli/src/index.ts"],
+      "@popo-tool/core": ["packages/popo-core/src/index.ts"],
+      "@nrwl/bolt": ["packages/bolt/src/index.ts"]
     }
   }
 }

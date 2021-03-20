@@ -20,5 +20,8 @@ module.exports = {
     '<rootDir>/packages/angular',
     '<rootDir>/packages/gatsby',
     '<rootDir>/apps/dep-graph-client',
+    '<rootDir>/packages/popo-cli',
+    '<rootDir>/packages/popo-core',
+    '<rootDir>/packages/bolt',
   ],
 };
