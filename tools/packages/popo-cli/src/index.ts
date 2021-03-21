@@ -1,1 +1,2 @@
-export * from './lib/popo-cli';
+export { run } from '@oclif/command';
+export * from './commands/install';

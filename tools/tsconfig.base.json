@@ -44,7 +44,7 @@
       "@nrwl/e2e/cli": ["./e2e/cli"],
       "@popo-tool/cli": ["packages/popo-cli/src/index.ts"],
       "@popo-tool/core": ["packages/popo-core/src/index.ts"],
-      "@nrwl/bolt": ["packages/bolt/src/index.ts"]
+      "@moraj/bolt": ["packages/bolt/src/index.ts"]
     }
   }
 }
