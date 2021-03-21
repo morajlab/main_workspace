@@ -6,9 +6,5 @@ dist
 /coverage
 test
 .DS_Store
-tmp
 *.log
-jest.debug.config.js
-.tool-versions
-/.verdaccio/build/local-registry
 git
