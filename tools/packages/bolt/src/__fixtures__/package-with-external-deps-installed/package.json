@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "package-with-external-deps-installed",
+  "version": "1.0.0",
+  "bolt": {
+    "workspaces": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "foo-dep": "^1.0.0",
+    "global-dep": "^1.0.0",
+    "project-only-dep": "^1.0.0",
+    "project-only-dep-with-beta-tag": "1.0.0-beta"
+  }
+}

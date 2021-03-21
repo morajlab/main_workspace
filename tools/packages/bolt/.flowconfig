@@ -1,0 +1,10 @@
+[ignore]
+.*/__fixtures__/.*
+
+[include]
+
+[libs]
+
+[options]
+
+[lints]
