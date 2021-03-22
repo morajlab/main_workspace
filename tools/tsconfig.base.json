@@ -3,6 +3,7 @@
     "target": "es2015",
     "sourceMap": true,
     "importHelpers": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "build",
