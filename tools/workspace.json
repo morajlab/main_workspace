@@ -2381,6 +2381,77 @@
           }
         }
       }
+    },
+    "nx-oclif": {
+      "root": "packages/nx-oclif",
+      "sourceRoot": "packages/nx-oclif/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/nx-oclif/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/nx-oclif"
+          ],
+          "options": {
+            "jestConfig": "packages/nx-oclif/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/nx-oclif",
+            "tsConfig": "packages/nx-oclif/tsconfig.lib.json",
+            "packageJson": "packages/nx-oclif/package.json",
+            "main": "packages/nx-oclif/src/index.ts",
+            "assets": [
+              "packages/nx-oclif/*.md",
+              {
+                "input": "./packages/nx-oclif/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-oclif",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-oclif",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-oclif-e2e": {
+      "projectType": "application",
+      "root": "apps\\nx-oclif-e2e",
+      "sourceRoot": "apps\\nx-oclif-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-oclif:build",
+            "npmPackageName": "@nrwl/nx-oclif",
+            "pluginOutputPath": "dist/packages/nx-oclif",
+            "jestConfig": "apps/nx-oclif-e2e/jest.config.js"
+          }
+        }
+      }
     }
   },
   "cli": {

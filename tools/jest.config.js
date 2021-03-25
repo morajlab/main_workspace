@@ -23,5 +23,7 @@ module.exports = {
     '<rootDir>/packages/popo-cli',
     '<rootDir>/packages/popo-core',
     '<rootDir>/packages/bolt',
+    '<rootDir>/packages/nx-oclif',
+    '<rootDir>/apps\\nx-oclif-e2e',
   ],
 };

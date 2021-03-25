@@ -95,7 +95,9 @@
     "gatsby": { "tags": [] },
     "popo-cli": { "tags": [] },
     "popo-core": { "tags": [] },
-    "bolt": { "tags": [] }
+    "bolt": { "tags": [] },
+    "nx-oclif": { "tags": [] },
+    "nx-oclif-e2e": { "tags": [], "implicitDependencies": ["nx-oclif"] }
   },
   "affected": { "defaultBase": "master" }
 }
