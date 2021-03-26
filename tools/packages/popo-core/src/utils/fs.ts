@@ -1,170 +1,139 @@
 import fs from 'fs';
-import path from 'path';
+import { join, dirname, basename, extname, relative, resolve, sep } from 'path';
 import _cmdShim from 'cmd-shim';
 import _readCmdShim from 'read-cmd-shim';
 import promisify from 'typeable-promisify';
 import makeDir from 'make-dir';
 import _rimraf from 'rimraf';
 
-export function readFile(filePath: string): Promise<string> {
-  return promisify((cb: any) => fs.readFile(filePath, cb));
-}
+const stripExtension = (path: string): string =>
+  join(dirname(path), basename(path, extname(path)));
 
-export function writeFile(
-  filePath: string,
-  fileContents: string
-): Promise<string> {
-  return promisify((cb: any) => fs.writeFile(filePath, fileContents, cb));
-}
+const _symlink = (src: string, dest: string, type: any): Promise<any> =>
+  promisify((cb: any) => fs.symlink(src, dest, type, cb));
 
-export function mkdirp(filePath: string): Promise<string> {
-  return makeDir(filePath);
-}
-
-export function rimraf(filePath: string): Promise<void> {
-  return promisify((cb: any) => _rimraf(filePath, cb));
-}
-
-export function stat(filePath: string) {
-  return promisify((cb: any) => fs.stat(filePath, cb));
-}
-
-export function lstat(filePath: string) {
-  return promisify((cb: any) => fs.lstat(filePath, cb));
-}
-
-function unlink(filePath: string) {
-  return promisify((cb: any) => fs.unlink(filePath, cb));
-}
-
-export function realpath(filePath: string) {
-  return promisify((cb: any) => fs.realpath(filePath, cb));
-}
-
-function _symlink(src: string, dest: string, type: any) {
-  return promisify((cb: any) => fs.symlink(src, dest, type, cb));
-}
-
-function stripExtension(filePath: string) {
-  return path.join(
-    path.dirname(filePath),
-    path.basename(filePath, path.extname(filePath))
-  );
-}
-
-async function cmdShim(src: string, dest: string) {
-  // If not a symlink we default to the actual src file
-  // https://github.com/npm/npm/blob/d081cc6c8d73f2aa698aab36605377c95e916224/lib/utils/gently-rm.js#L273
-  let relativeShimTarget = await readlink(src);
-  let currentShimTarget = relativeShimTarget
-    ? path.resolve(path.dirname(src), relativeShimTarget)
-    : src;
-  await promisify((cb: any) => _cmdShim(currentShimTarget, stripExtension(dest), cb));
-}
-
-async function createSymbolicLink(src: any, dest: any, type: any) {
+const createSymbolicLink = async (src: string, dest: string, type: any) => {
   try {
     await lstat(dest);
     await rimraf(dest);
   } catch (err) {
     if (err.code === 'EPERM') throw err;
   }
+
   await _symlink(src, dest, type);
-}
+};
 
-async function createPosixSymlink(origin: any, dest: any, type: any) {
-  if (type === 'exec') {
-    type = 'file';
+// If not a symlink we default to the actual src file
+// https://github.com/npm/npm/blob/d081cc6c8d73f2aa698aab36605377c95e916224/lib/utils/gently-rm.js#L273
+const cmdShim = async (src: string, dest: string) => {
+  let relativeShimTarget = await readlink(src);
+
+  if (relativeShimTarget) {
+    src = resolve(dirname(src), relativeShimTarget);
   }
 
-  let src = path.relative(path.dirname(dest), origin);
+  return await promisify((cb: any) => _cmdShim(src, stripExtension(dest), cb));
+};
 
-  return await createSymbolicLink(src, dest, type);
-}
+const createPosixSymlink = async (origin: any, dest: string, type: any) =>
+  await createSymbolicLink(
+    relative(dirname(dest), origin),
+    dest,
+    type === 'exec' ? 'file' : type
+  );
 
-async function createWindowsSymlink(src: any, dest: any, type: any) {
-  if (type === 'exec') {
-    return await cmdShim(src, dest);
-  } else {
-    return await createSymbolicLink(src, dest, type);
-  }
-}
+const createWindowsSymlink = async (src: string, dest: string, type: any) =>
+  type === 'exec'
+    ? await cmdShim(src, dest)
+    : await createSymbolicLink(src, dest, type);
 
-export async function symlink(
+const readCmdShim = (path: string) =>
+  promisify((cb: any) => _readCmdShim(path, cb));
+
+const _readlink = (path: string) =>
+  promisify((cb: any) => fs.readlink(path, cb));
+
+export const readFile = (path: string): Promise<string> =>
+  promisify((cb: any) => fs.readFile(path, cb));
+
+export const writeFile = (path: string, content: string): Promise<string> =>
+  promisify((cb: any) => fs.writeFile(path, content, cb));
+
+export const mkdirp = (path: string): Promise<string> => makeDir(path);
+
+export const rimraf = (path: string): Promise<void> =>
+  promisify((cb: any) => _rimraf(path, cb));
+
+export const stat = (path: string): Promise<any> =>
+  promisify((cb: any) => fs.stat(path, cb));
+
+export const lstat = (path: string): Promise<any> =>
+  promisify((cb: any) => fs.lstat(path, cb));
+
+export const unlink = (path: string): Promise<any> =>
+  promisify((cb: any) => fs.unlink(path, cb));
+
+export const realpath = (path: string): Promise<any> =>
+  promisify((cb: any) => fs.realpath(path, cb));
+
+export const symlink = async (
   src: string,
   dest: string,
   type: 'exec' | 'junction'
-) {
-  if (dest.includes(path.sep)) {
-    await mkdirp(path.dirname(dest));
+) => {
+  if (dest.includes(sep)) {
+    await mkdirp(dirname(dest));
   }
 
-  if (process.platform === 'win32') {
-    return await createWindowsSymlink(src, dest, type);
-  } else {
-    return await createPosixSymlink(src, dest, type);
-  }
-}
+  return process.platform === 'win32'
+    ? await createWindowsSymlink(src, dest, type)
+    : await createPosixSymlink(src, dest, type);
+};
 
-export async function readdir(dir: string) {
-  return promisify((cb: any) => fs.readdir(dir, cb));
-}
+export const readdir = async (dir: string) =>
+  promisify((cb: any) => fs.readdir(dir, cb));
 
-// Return an empty array if a directory doesnt exist (but still throw if errof if dir is a file)
-export async function readdirSafe(dir: string) {
-  return stat(dir)
-    .catch((err: any) => Promise.resolve([]))
+export const readdirSafe = async (dir: string) =>
+  stat(dir)
+    .catch((_err: any) => Promise.resolve([]))
     .then((statsOrArray: any) => {
-      if (statsOrArray instanceof Array) return statsOrArray;
-      if (!statsOrArray.isDirectory())
-        throw new Error(dir + ' is not a directory');
+      if (statsOrArray instanceof Array) {
+        return statsOrArray;
+      } else if (!statsOrArray.isDirectory()) {
+        throw new Error(`${dir} is not a directory`);
+      }
+
       return readdir(dir);
     });
-}
-
-function readCmdShim(filePath: string) {
-  return promisify((cb: any) => _readCmdShim(filePath, cb));
-}
-
-function _readlink(filePath: string) {
-  return promisify((cb: any) => fs.readlink(filePath, cb));
-}
 
 // Copied from:
 // https://github.com/npm/npm/blob/d081cc6c8d73f2aa698aab36605377c95e916224/lib/utils/gently-rm.js#L280-L297
-export async function readlink(filePath: string) {
-  let stat = await lstat(filePath);
-  let result = null;
+export const readlink = async (path: string) => {
+  if ((await lstat(path)).isSymbolicLink()) {
+    return await _readlink(path);
+  }
 
-  if (stat.isSymbolicLink()) {
-    result = await _readlink(filePath);
-  } else {
-    try {
-      result = await readCmdShim(filePath);
-    } catch (err) {
-      if (err.code !== 'ENOTASHIM' && err.code !== 'EISDIR') {
-        throw err;
-      }
+  try {
+    return await readCmdShim(path);
+  } catch (err) {
+    if (err.code !== 'ENOTASHIM' && err.code !== 'EISDIR') {
+      throw err;
     }
   }
+};
 
-  return result;
-}
-
-export async function dirExists(dir: string) {
+export const dirExists = async (dir: string) => {
   try {
-    let _stat = await stat(dir);
-    return _stat.isDirectory();
+    return (await stat(dir)).isDirectory();
   } catch (err) {
     return false;
   }
-}
+};
 
-export async function symlinkExists(filePath: string) {
+export const symlinkExists = async (path: string) => {
   try {
-    let stat = await lstat(filePath);
-    return stat.isSymbolicLink();
+    return (await lstat(path)).isSymbolicLink();
   } catch (err) {
     return false;
   }
-}
+};

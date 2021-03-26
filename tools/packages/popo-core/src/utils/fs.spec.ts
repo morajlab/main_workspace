@@ -82,88 +82,80 @@ describe('fs', () => {
     });
   });
 
-  /*describe('symlink()', () => {
-    afterEach(() => {
-      process.platform = REAL_PLATFORM;
-    });
+  describe('symlink()', () => {
+    if (REAL_PLATFORM === 'linux') {
+      describe('posix', () => {
+        it('should create a relative symlink to a directory', async () => {
+          let tempDir = f.temp();
+          let src = join(f.find('symlinks'), 'file.txt');
+          let dest = resolve(tempDir, 'file.txt');
 
-    describe('posix', () => {
-      beforeEach(() => {
-        process.platform = 'linux';
+          await fs.symlink(src, dest, 'junction');
+
+          let realPath = (await fs.readlink(dest)) || '';
+          let resolved = join(dirname(dest), realPath);
+
+          expect(resolved).toEqual(src);
+        });
+
+        it('should create a relative symlink to an executable file', async () => {
+          let tempDir = f.temp();
+          let src = join(f.find('symlinks'), 'executable.sh');
+          let dest = resolve(tempDir, 'executable.sh');
+
+          await fs.symlink(src, dest, 'exec');
+
+          let realPath = (await fs.readlink(dest)) || '';
+          let resolved = join(dirname(dest), realPath);
+
+          expect(resolved).toEqual(src);
+        });
+
+        it('should overwrite an existing symlink', async () => {
+          let tempDir = f.temp();
+          let src1 = join(f.find('symlinks'), 'file.txt');
+          let src2 = join(f.find('symlinks'), 'file2.txt');
+          let dest = resolve(tempDir, 'file.txt');
+
+          await fs.symlink(src1, dest, 'junction');
+          await fs.symlink(src2, dest, 'junction');
+
+          let realPath = (await fs.readlink(dest)) || '';
+          let resolved = join(dirname(dest), realPath);
+
+          expect(resolved).toEqual(src2);
+        });
       });
+    }
 
-      it('should create a relative symlink to a directory', async () => {
-        let tempDir = f.temp();
-        let src = join(f.find('symlinks'), 'file.txt');
-        let dest = resolve(tempDir, 'file.txt');
+    if (REAL_PLATFORM === 'win32') {
+      describe('windows', () => {
+        it('should create a command shim to an executable file', async () => {
+          let tempDir = f.temp();
+          let src = join(f.find('symlinks'), 'shim.cmd');
+          let dest = resolve(tempDir, 'unshimmed.cmd');
 
-        await fs.symlink(src, dest, 'junction');
+          await fs.symlink(src, dest, 'exec');
 
-        let realPath = (await fs.readlink(dest)) || '';
-        let resolved = join(dirname(dest), realPath);
+          let files = await fs.readdir(tempDir);
 
-        expect(resolved).toEqual(src);
+          expect(files).toEqual(['unshimmed', 'unshimmed.cmd']);
+        });
+
+        it('should always use absolute paths when creating symlinks', async () => {
+          let tempDir = f.temp();
+          let src = join(f.find('symlinks'), 'file.txt');
+          let dest = resolve(tempDir, 'file.txt');
+
+          await fs.symlink(src, dest, 'junction');
+
+          let realPath = await fs.readlink(dest);
+
+          expect(realPath).toBe(src);
+        });
       });
-
-      it('should create a relative symlink to an executable file', async () => {
-        let tempDir = f.temp();
-        let src = join(f.find('symlinks'), 'executable.sh');
-        let dest = resolve(tempDir, 'executable.sh');
-
-        await fs.symlink(src, dest, 'exec');
-
-        let realPath = (await fs.readlink(dest)) || '';
-        let resolved = join(dirname(dest), realPath);
-
-        expect(resolved).toEqual(src);
-      });
-
-      it('should overwrite an existing symlink', async () => {
-        let tempDir = f.temp();
-        let src1 = join(f.find('symlinks'), 'file.txt');
-        let src2 = join(f.find('symlinks'), 'file2.txt');
-        let dest = resolve(tempDir, 'file.txt');
-
-        await fs.symlink(src1, dest, 'junction');
-        await fs.symlink(src2, dest, 'junction');
-
-        let realPath = (await fs.readlink(dest)) || '';
-        let resolved = join(dirname(dest), realPath);
-
-        expect(resolved).toEqual(src2);
-      });
-    });
-
-    describe('windows', () => {
-      beforeEach(() => {
-        process.platform = 'win32';
-      });
-
-      it('should create a command shim to an executable file', async () => {
-        let tempDir = f.temp();
-        let src = join(f.find('symlinks'), 'shim.cmd');
-        let dest = resolve(tempDir, 'unshimmed.cmd');
-
-        await fs.symlink(src, dest, 'exec');
-
-        let files = await fs.readdir(tempDir);
-
-        expect(files).toEqual(['unshimmed', 'unshimmed.cmd']);
-      });
-
-      it('should always use absolute paths when creating symlinks', async () => {
-        let tempDir = f.temp();
-        let src = join(f.find('symlinks'), 'file.txt');
-        let dest = resolve(tempDir, 'file.txt');
-
-        await fs.symlink(src, dest, 'junction');
-
-        let realPath = await fs.readlink(dest);
-
-        expect(realPath).toBe(src);
-      });
-    });
-  });*/
+    }
+  });
 
   describe('readdir()', () => {
     it('should list a directory of files', async () => {
