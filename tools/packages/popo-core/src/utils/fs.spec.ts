@@ -1,8 +1,10 @@
 import * as fs from './fs';
 import { join, dirname, resolve } from 'path';
 import fixtures from 'fixturez';
+import { pathEqual } from 'path-equal';
 
 const f = fixtures(__dirname);
+const _pathEqual = pathEqual;
 const REAL_PLATFORM = process.platform;
 
 describe('fs', () => {
@@ -151,7 +153,7 @@ describe('fs', () => {
 
           let realPath = await fs.readlink(dest);
 
-          expect(realPath).toBe(src);
+          expect(_pathEqual(realPath, src)).toBeTruthy();
         });
       });
     }

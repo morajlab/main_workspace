@@ -5,6 +5,7 @@ import _readCmdShim from 'read-cmd-shim';
 import promisify from 'typeable-promisify';
 import makeDir from 'make-dir';
 import _rimraf from 'rimraf';
+import POPOError from './errors';
 
 const stripExtension = (path: string): string =>
   join(dirname(path), basename(path, extname(path)));
@@ -100,7 +101,7 @@ export const readdirSafe = async (dir: string) =>
       if (statsOrArray instanceof Array) {
         return statsOrArray;
       } else if (!statsOrArray.isDirectory()) {
-        throw new Error(`${dir} is not a directory`);
+        throw new POPOError(`${dir} is not a directory`);
       }
 
       return readdir(dir);

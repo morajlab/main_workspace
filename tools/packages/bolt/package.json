@@ -42,7 +42,8 @@
     "lint-staged": "^4.1.3",
     "mode-to-permissions": "^0.0.2",
     "path-exists": "^3.0.0",
-    "prettier": "~1.18.2"
+    "prettier": "~1.18.2",
+    "@moraj/path-equal": "latest"
   },
   "dependencies": {
     "array-includes": "^3.0.3",

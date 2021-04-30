@@ -233,6 +233,7 @@
     "parse-json": "^2.2.0",
     "parse-markdown-links": "^1.0.4",
     "parse5": "4.0.0",
+    "path-equal": "^1.1.2",
     "path-is-inside": "^1.0.2",
     "pkg-up": "^3.1.0",
     "postcss": "8.2.4",
