@@ -175,6 +175,41 @@
           }
         }
       }
+    },
+    "figma-html": {
+      "root": "libs/figma-html",
+      "sourceRoot": "libs/figma-html/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/figma-html",
+            "tsConfig": "libs/figma-html/tsconfig.lib.json",
+            "project": "libs/figma-html/package.json",
+            "entryFile": "libs/figma-html/src/index.ts",
+            "external": ["react", "react-dom"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [{ "glob": "README.md", "input": ".", "output": "." }]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/figma-html/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/figma-html"],
+          "options": {
+            "jestConfig": "libs/figma-html/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
