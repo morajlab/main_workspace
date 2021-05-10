@@ -1,18 +1,13 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "workspace-desktop",
   "tasksRunnerOptions": {
     "default": {
@@ -26,28 +21,13 @@
     }
   },
   "projects": {
-    "next10": {
-      "tags": []
-    },
-    "next10-e2e": {
-      "tags": [],
-      "implicitDependencies": ["next10"]
-    },
-    "react-uwp": {
-      "tags": []
-    },
-    "fluent-app-ui-kit": {
-      "tags": []
-    },
-    "next10-gui": {
-      "tags": []
-    },
-    "desktop": {
-      "tags": []
-    },
-    "desktop-e2e": {
-      "tags": [],
-      "implicitDependencies": ["desktop"]
-    }
+    "next10": { "tags": [] },
+    "next10-e2e": { "tags": [], "implicitDependencies": ["next10"] },
+    "react-uwp": { "tags": [] },
+    "fluent-app-ui-kit": { "tags": [] },
+    "next10-gui": { "tags": [] },
+    "desktop": { "tags": [] },
+    "desktop-e2e": { "tags": [], "implicitDependencies": ["desktop"] },
+    "uwp.js": { "tags": [] }
   }
 }
