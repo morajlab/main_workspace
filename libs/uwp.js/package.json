@@ -1,4 +1,37 @@
 {
   "name": "uwp.js",
-  "version": "0.0.1"
+  "version": "0.1.0",
+  "description": "UWP Design & Fluent Design UiKit by React",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morteza-jamali/uwp.js.git"
+  },
+  "keywords": [
+    "uwp",
+    "microsoft-uwp",
+    "fluent",
+    "microsoft-fluent",
+    "uwp-design",
+    "fluent-design",
+    "react",
+    "typescript",
+    "javascript",
+    "react-components",
+    "windows-uwp",
+    "uwp.js"
+  ],
+  "author": "myxvisual",
+  "contributors": [
+    {
+      "name": "Morteza Jamali",
+      "email": "mortezajamali4241@gmail.com",
+      "url": "https://moraj.ir"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morteza-jamali/uwp.js/issues"
+  },
+  "homepage": "https://www.react-uwp.com"
 }

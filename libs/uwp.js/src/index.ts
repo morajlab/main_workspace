@@ -1,1 +1,1 @@
-export * from './lib/uwp.js';
+export * from './lib/.';
