@@ -28,6 +28,7 @@
     "next10-gui": { "tags": [] },
     "desktop": { "tags": [] },
     "desktop-e2e": { "tags": [], "implicitDependencies": ["desktop"] },
-    "uwp.js": { "tags": [] }
+    "uwp.js": { "tags": [] },
+    "uwp.js-src-lib-acrylic": { "tags": [] }
   }
 }

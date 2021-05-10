@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/libs/next10/gui',
     '<rootDir>/apps/desktop',
     '<rootDir>/libs/uwp.js',
+    '<rootDir>/libs/uwp.js/src/lib/acrylic',
   ],
 };

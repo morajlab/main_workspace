@@ -277,6 +277,38 @@
           }
         }
       }
+    },
+    "uwp.js-src-lib-acrylic": {
+      "root": "libs/uwp.js/src/lib/acrylic",
+      "sourceRoot": "libs/uwp.js/src/lib/acrylic/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/uwp.js/src/lib/acrylic/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/uwp.js/src/lib/acrylic"],
+          "options": {
+            "jestConfig": "libs/uwp.js/src/lib/acrylic/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/uwp.js/src/lib/acrylic",
+            "tsConfig": "libs/uwp.js/src/lib/acrylic/tsconfig.lib.json",
+            "packageJson": "libs/uwp.js/src/lib/acrylic/package.json",
+            "main": "libs/uwp.js/src/lib/acrylic/src/index.ts",
+            "assets": ["libs/uwp.js/src/lib/acrylic/*.md"]
+          }
+        }
+      }
     }
   }
 }
