@@ -14,7 +14,7 @@ export default class Desktop extends Component {
       root: {
         width: '100%',
         height: '100%',
-        background: theme.acrylicTexture80.background,
+        background: theme.acrylicTexture40.background,
       },
     };
 

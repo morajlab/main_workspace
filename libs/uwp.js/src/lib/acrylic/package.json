@@ -1,4 +1,8 @@
 {
-  "name": "uwp.js/acrylic",
-  "version": "0.0.1"
+  "name": "@uwp.js/acrylic",
+  "version": "0.1.0",
+  "dependencies": {
+    "stackblur-canvas": "^2.5.0",
+    "tinycolor2": "^1.4.2"
+  }
 }

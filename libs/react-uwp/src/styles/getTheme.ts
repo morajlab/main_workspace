@@ -1,8 +1,8 @@
-import * as tinycolor from "tinycolor2";
-import setSegoeMDL2AssetsFonts from "./fonts/segoe-mdl2-assets";
-import IS_NODE_ENV from "../common/nodeJS/IS_NODE_ENV";
-import prefixAll from "../common/prefixAll";
-import generateAcrylicTexture from "./generateAcrylicTexture";
+import tinycolor from 'tinycolor2';
+import setSegoeMDL2AssetsFonts from './fonts/segoe-mdl2-assets';
+import IS_NODE_ENV from '../common/nodeJS/IS_NODE_ENV';
+import prefixAll from '../common/prefixAll';
+import { generateAcrylic } from '@uwp.js/acrylic';
 
 if (!IS_NODE_ENV) {
   setSegoeMDL2AssetsFonts();
@@ -21,7 +21,7 @@ export function lighten(color: string, coefficient: number) {
 }
 
 export interface ThemeConfig {
-  themeName?: "dark" | "light";
+  themeName?: 'dark' | 'light';
   accent?: string;
 
   useFluentDesign?: boolean;
@@ -30,7 +30,9 @@ export interface ThemeConfig {
   useInlineStyle?: boolean;
 }
 
-export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType {
+export default function getTheme(
+  themeConfig?: ThemeConfig
+): ReactUWP.ThemeType {
   themeConfig = themeConfig || {};
   let {
     themeName,
@@ -39,16 +41,16 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
     useFluentDesign,
     desktopBackgroundImage,
     userAgent,
-    useInlineStyle
+    useInlineStyle,
   } = themeConfig;
 
-  themeName = themeName || "dark";
-  accent = accent || "#0078D7";
+  themeName = themeName || 'dark';
+  accent = accent || '#0078D7';
   useFluentDesign = useFluentDesign === void 0 ? false : useFluentDesign;
 
-  const isDark = themeName === "dark";
-  const baseHigh = isDark ? "#fff" : "#000";
-  const altHigh = isDark ? "#000" : "#fff";
+  const isDark = themeName === 'dark';
+  const baseHigh = isDark ? '#fff' : '#000';
+  const altHigh = isDark ? '#000' : '#fff';
   const baseHighColor = tinycolor(baseHigh);
   const altHighColor = tinycolor(altHigh);
   const accentColor = tinycolor(accent);
@@ -61,8 +63,9 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
   const theme: ReactUWP.ThemeType = {
     themeName,
     fonts: {
-      sansSerifFonts: "Segoe UI, Microsoft YaHei, Open Sans, sans-serif, Hiragino Sans GB, Arial, Lantinghei SC, STHeiti, WenQuanYi Micro Hei, SimSun",
-      segoeMDL2Assets: "Segoe MDL2 Assets"
+      sansSerifFonts:
+        'Segoe UI, Microsoft YaHei, Open Sans, sans-serif, Hiragino Sans GB, Arial, Lantinghei SC, STHeiti, WenQuanYi Micro Hei, SimSun',
+      segoeMDL2Assets: 'Segoe MDL2 Assets',
     },
     useInlineStyle: Boolean(useInlineStyle),
 
@@ -74,13 +77,13 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
 
     haveAcrylicTextures: false,
     acrylicTexture40: {
-      background: altMediumLow
+      background: altMediumLow,
     },
     acrylicTexture60: {
-      background: altMedium
+      background: altMedium,
     },
     acrylicTexture80: {
-      background: altMediumHigh
+      background: altMediumHigh,
     },
 
     scrollReveals: [],
@@ -112,20 +115,20 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
     listAccentMedium: accentColor.setAlpha(0.8).toRgbString(),
     listAccentHigh: accentColor.setAlpha(0.9).toRgbString(),
 
-    chromeLow: isDark ? "#171717" : "#f2f2f2",
-    chromeMediumLow: isDark ? "#2b2b2b" : "#f2f2f2",
-    chromeMedium: isDark ? "#1f1f1f" : "#e6e6e6",
-    chromeHigh: isDark ? "#767676" : "#ccc",
+    chromeLow: isDark ? '#171717' : '#f2f2f2',
+    chromeMediumLow: isDark ? '#2b2b2b' : '#f2f2f2',
+    chromeMedium: isDark ? '#1f1f1f' : '#e6e6e6',
+    chromeHigh: isDark ? '#767676' : '#ccc',
 
-    chromeAltLow: isDark ? "#f2f2f2" : "#171717",
-    chromeDisabledLow: isDark ? "#858585" : "#7a7a7a",
-    chromeDisabledHigh: isDark ? "#333" : "#ccc",
+    chromeAltLow: isDark ? '#f2f2f2' : '#171717',
+    chromeDisabledLow: isDark ? '#858585' : '#7a7a7a',
+    chromeDisabledHigh: isDark ? '#333' : '#ccc',
 
-    chromeBlackLow: tinycolor("#000").setAlpha(0.2).toRgbString(),
-    chromeBlackMediumLow: tinycolor("#000").setAlpha(0.4).toRgbString(),
-    chromeBlackMedium: tinycolor("#000").setAlpha(0.8).toRgbString(),
-    chromeBlackHigh: "#000",
-    chromeWhite: "#fff",
+    chromeBlackLow: tinycolor('#000').setAlpha(0.2).toRgbString(),
+    chromeBlackMediumLow: tinycolor('#000').setAlpha(0.4).toRgbString(),
+    chromeBlackMedium: tinycolor('#000').setAlpha(0.8).toRgbString(),
+    chromeBlackHigh: '#000',
+    chromeWhite: '#fff',
 
     isDarkTheme: isDark,
     prefixStyle: prefixAll(userAgent),
@@ -133,11 +136,18 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
       if (!this.styleManager) return;
       const { extendsClassName, ...managerConfig } = config;
       if (this.useInlineStyle) {
-        managerConfig.className += extendsClassName ? ` ${extendsClassName}` : "";
+        managerConfig.className += extendsClassName
+          ? ` ${extendsClassName}`
+          : '';
         return managerConfig;
       } else {
-        const styleClasses = this.styleManager.setStyleToManager(managerConfig, callback);
-        styleClasses.className += extendsClassName ? ` ${extendsClassName}` : "";
+        const styleClasses = this.styleManager.setStyleToManager(
+          managerConfig,
+          callback
+        );
+        styleClasses.className += extendsClassName
+          ? ` ${extendsClassName}`
+          : '';
         return styleClasses;
       }
     },
@@ -151,21 +161,29 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
         }
         return result;
       } else {
-        const styleClasses = this.styleManager.setStylesToManager(config, callback);
+        const styleClasses = this.styleManager.setStylesToManager(
+          config,
+          callback
+        );
         return styleClasses;
       }
     },
 
     classNames(...classNames) {
-      return classNames.reduce((prev, curr) => (prev || "") + (curr ? ` ${curr}` : ""));
+      return classNames.reduce(
+        (prev, curr) => (prev || '') + (curr ? ` ${curr}` : '')
+      );
     },
 
-    generateAcrylicTextures(currTheme: ReactUWP.ThemeType, themeCallback?: (theme?: ReactUWP.ThemeType) => void) {
+    generateAcrylicTextures(
+      currTheme: ReactUWP.ThemeType,
+      themeCallback?: (theme?: ReactUWP.ThemeType) => void
+    ) {
       this.acrylicTextureCount = 0;
       const baseConfig = {
         blurSize: 24,
         noiseSize: 1,
-        noiseOpacity: 0.2
+        noiseOpacity: 0.2,
       };
       let backgrounds: string[] = [];
 
@@ -176,7 +194,7 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
             tintColor: currTheme.chromeMediumLow,
             tintOpacity: 0.4,
             background: `url(${image}) no-repeat fixed top left / cover`,
-            ...baseConfig
+            ...baseConfig,
           });
         }
         if (key === 6) {
@@ -185,7 +203,7 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
             tintColor: currTheme.chromeLow,
             tintOpacity: 0.6,
             background: `url(${image}) no-repeat fixed top left / cover`,
-            ...baseConfig
+            ...baseConfig,
           });
         }
         if (key === 8) {
@@ -194,7 +212,7 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
             tintColor: currTheme.chromeLow,
             tintOpacity: 0.8,
             background: `url(${image}) no-repeat fixed top left / cover`,
-            ...baseConfig
+            ...baseConfig,
           });
         }
 
@@ -209,32 +227,34 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
         }
       };
 
-      generateAcrylicTexture(
+      generateAcrylic(
         currTheme.desktopBackgroundImage,
+        (image) => {
+          console.log(image);
+          callback(image, 4);
+        },
         currTheme.chromeMediumLow,
-        0.4,
-        void 0,
-        void 0,
-        void 0,
-        image => callback(image, 4)
+        0.4
       );
-      generateAcrylicTexture(
+
+      generateAcrylic(
         currTheme.desktopBackgroundImage,
+        (image) => {
+          console.log(image);
+          callback(image, 6);
+        },
         currTheme.chromeLow,
-        0.6,
-        void 0,
-        void 0,
-        void 0,
-        image => callback(image, 6)
+        0.6
       );
-      generateAcrylicTexture(
+
+      generateAcrylic(
         currTheme.desktopBackgroundImage,
+        (image) => {
+          console.log(image);
+          callback(image, 8);
+        },
         currTheme.chromeLow,
-        0.8,
-        void 0,
-        void 0,
-        void 0,
-        image => callback(image, 8)
+        0.8
       );
     },
 
@@ -242,58 +262,58 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
 
     typographyStyles: {
       header: {
-        fontWeight: "lighter",
+        fontWeight: 'lighter',
         fontSize: 46,
-        lineHeight: "56px"
+        lineHeight: '56px',
       },
       subHeader: {
-        fontWeight: "lighter",
+        fontWeight: 'lighter',
         fontSize: 34,
-        lineHeight: "40px"
+        lineHeight: '40px',
       },
 
       title: {
-        fontWeight: "lighter",
+        fontWeight: 'lighter',
         fontSize: 24,
-        lineHeight: "28px"
+        lineHeight: '28px',
       },
       subTitle: {
-        fontWeight: "normal",
+        fontWeight: 'normal',
         fontSize: 20,
-        lineHeight: "24px"
+        lineHeight: '24px',
       },
       subTitleAlt: {
-        fontWeight: "normal",
+        fontWeight: 'normal',
         fontSize: 18,
-        lineHeight: "20px"
+        lineHeight: '20px',
       },
 
       base: {
         fontWeight: 300,
         fontSize: 15,
-        lineHeight: "20px"
+        lineHeight: '20px',
       },
       baseAlt: {
-        fontWeight: "bold",
+        fontWeight: 'bold',
         fontSize: 15,
-        lineHeight: "20px"
+        lineHeight: '20px',
       },
       body: {
         fontWeight: 200,
         fontSize: 15,
-        lineHeight: "20px"
+        lineHeight: '20px',
       },
 
       captionAlt: {
-        fontWeight: "lighter",
+        fontWeight: 'lighter',
         fontSize: 13,
-        lineHeight: "16px"
+        lineHeight: '16px',
       },
       caption: {
-        fontWeight: "lighter",
+        fontWeight: 'lighter',
         fontSize: 12,
-        lineHeight: "14px"
-      }
+        lineHeight: '14px',
+      },
     },
     zIndex: {
       listView: 10,
@@ -305,8 +325,8 @@ export default function getTheme(themeConfig?: ThemeConfig): ReactUWP.ThemeType 
       contentDialog: 300,
       header: 301,
       mediaPlayer: 2147483647,
-      toast: 310
-    }
+      toast: 310,
+    },
   } as ReactUWP.ThemeType;
   return theme;
 }

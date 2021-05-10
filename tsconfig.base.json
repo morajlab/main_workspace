@@ -21,8 +21,8 @@
         "libs/fluent-app-ui-kit/index.ts"
       ],
       "@next10/gui": ["libs/next10/gui/src/index.ts"],
-      "uwp.js": ["libs/uwp.js/src/index.ts"],
-      "uwp.js/acrylic": ["libs/uwp.js/src/lib/acrylic/src/index.ts"]
+      "@uwp.js": ["libs/uwp.js/src/index.ts"],
+      "@uwp.js/acrylic": ["libs/uwp.js/src/lib/acrylic/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
