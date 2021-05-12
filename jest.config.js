@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/apps/desktop',
     '<rootDir>/libs/morajlab.bit/fluent-app-ui-kit',
     '<rootDir>/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar',
+    '<rootDir>/libs/morajlab.bit/react-macos-ui',
   ],
 };

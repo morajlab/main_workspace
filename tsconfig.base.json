@@ -21,7 +21,8 @@
       "@fluent-app-ui-kit": ["libs/morajlab.bit/fluent-app-ui-kit/index.ts"],
       "@fluent-app-ui-kit/commandbar": [
         "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/index.ts"
-      ]
+      ],
+      "@react-macos-ui": ["libs/morajlab.bit/react-macos-ui/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

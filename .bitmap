@@ -7,5 +7,11 @@
         "mainFile": "index.ts",
         "rootDir": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar"
     },
+    "react-macos-ui/ui/button": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "libs/morajlab.bit/react-macos-ui/ui/button"
+    },
     "version": "1.0.64"
 }
