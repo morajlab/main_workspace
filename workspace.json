@@ -162,31 +162,6 @@
         }
       }
     },
-    "fluent-app-ui-kit": {
-      "root": "libs/fluent-app-ui-kit",
-      "sourceRoot": "libs/fluent-app-ui-kit",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/fluent-app-ui-kit/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/fluent-app-ui-kit"
-          ],
-          "options": {
-            "jestConfig": "libs/fluent-app-ui-kit/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "next10-gui": {
       "root": "libs/next10/gui",
       "sourceRoot": "libs/next10/gui/src",
@@ -318,6 +293,106 @@
             "lintFilePatterns": [
               "apps/desktop-e2e/**/*.{js,ts}"
             ]
+          }
+        }
+      }
+    },
+    "morajlab.bit-fluent-app-ui-kit": {
+      "root": "libs/morajlab.bit/fluent-app-ui-kit",
+      "sourceRoot": "libs/morajlab.bit/fluent-app-ui-kit",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/fluent-app-ui-kit",
+            "tsConfig": "libs/morajlab.bit/fluent-app-ui-kit/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/fluent-app-ui-kit/package.json",
+            "entryFile": "libs/morajlab.bit/fluent-app-ui-kit/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/fluent-app-ui-kit/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/morajlab.bit/fluent-app-ui-kit"
+          ],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/fluent-app-ui-kit/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "morajlab.bit-fluent-app-ui-kit-ui-commandbar": {
+      "root": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
+      "sourceRoot": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
+            "tsConfig": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/package.json",
+            "entryFile": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar"
+          ],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
   "teambit.workspace/workspace": {
-    "name": "fluent-app-ui-kit",
+    "name": "morajlab.bit",
     "icon": "https://static.bit.dev/bit-logo.svg",
     "defaultDirectory": "{scope}/{name}",
     "defaultScope": "morajlab.fluent-app-ui-kit"
@@ -20,7 +20,9 @@
       }
     },
     "packageManagerArgs": [],
-    "devFilePatterns": ["**/*.spec.ts"],
+    "devFilePatterns": [
+      "**/*.spec.ts"
+    ],
     "strictPeerDependencies": true
   },
   "teambit.workspace/variants": {

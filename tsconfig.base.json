@@ -17,10 +17,11 @@
     "paths": {
       "@react-uwp": ["libs/react-uwp/index.ts"],
       "@react-uwp/*": ["libs/react-uwp/src/*"],
-      "@workspace-desktop/fluent-app-ui-kit": [
-        "libs/fluent-app-ui-kit/index.ts"
-      ],
-      "@next10/gui": ["libs/next10/gui/src/index.ts"]
+      "@next10/gui": ["libs/next10/gui/src/index.ts"],
+      "@fluent-app-ui-kit": ["libs/morajlab.bit/fluent-app-ui-kit/index.ts"],
+      "@fluent-app-ui-kit/commandbar": [
+        "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
