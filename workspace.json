@@ -446,6 +446,56 @@
           }
         }
       }
+    },
+    "morajlab.bit-react-macos-ui-ui-button": {
+      "root": "libs/morajlab.bit/react-macos-ui/ui/button",
+      "sourceRoot": "libs/morajlab.bit/react-macos-ui/ui/button",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/react-macos-ui/ui/button",
+            "tsConfig": "libs/morajlab.bit/react-macos-ui/ui/button/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/react-macos-ui/ui/button/package.json",
+            "entryFile": "libs/morajlab.bit/react-macos-ui/ui/button/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/react-macos-ui/ui/button/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/morajlab.bit/react-macos-ui/ui/button"
+          ],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/react-macos-ui/ui/button/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
