@@ -28,6 +28,9 @@
       ],
       "@react-macos-ui/checkbox": [
         "libs/morajlab.bit/react-macos-ui/ui/checkbox/index.ts"
+      ],
+      "@react-macos-ui/types": [
+        "libs/morajlab.bit/react-macos-ui/types/index.ts"
       ]
     }
   },

@@ -546,6 +546,56 @@
           }
         }
       }
+    },
+    "morajlab.bit-react-macos-ui-types": {
+      "root": "libs/morajlab.bit/react-macos-ui/types",
+      "sourceRoot": "libs/morajlab.bit/react-macos-ui/types",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/react-macos-ui/types",
+            "tsConfig": "libs/morajlab.bit/react-macos-ui/types/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/react-macos-ui/types/package.json",
+            "entryFile": "libs/morajlab.bit/react-macos-ui/types/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/react-macos-ui/types/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/morajlab.bit/react-macos-ui/types"
+          ],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/react-macos-ui/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
