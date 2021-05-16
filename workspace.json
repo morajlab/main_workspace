@@ -496,6 +496,56 @@
           }
         }
       }
+    },
+    "morajlab.bit-react-macos-ui-ui-checkbox": {
+      "root": "libs/morajlab.bit/react-macos-ui/ui/checkbox",
+      "sourceRoot": "libs/morajlab.bit/react-macos-ui/ui/checkbox",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/react-macos-ui/ui/checkbox",
+            "tsConfig": "libs/morajlab.bit/react-macos-ui/ui/checkbox/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/react-macos-ui/ui/checkbox/package.json",
+            "entryFile": "libs/morajlab.bit/react-macos-ui/ui/checkbox/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/react-macos-ui/ui/checkbox/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/morajlab.bit/react-macos-ui/ui/checkbox"
+          ],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/react-macos-ui/ui/checkbox/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

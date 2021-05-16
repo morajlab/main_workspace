@@ -25,6 +25,9 @@
       "@react-macos-ui": ["libs/morajlab.bit/react-macos-ui/index.ts"],
       "@react-macos-ui/button": [
         "libs/morajlab.bit/react-macos-ui/ui/button/index.ts"
+      ],
+      "@react-macos-ui/checkbox": [
+        "libs/morajlab.bit/react-macos-ui/ui/checkbox/index.ts"
       ]
     }
   },

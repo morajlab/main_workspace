@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar',
     '<rootDir>/libs/morajlab.bit/react-macos-ui',
     '<rootDir>/libs/morajlab.bit/react-macos-ui/ui/button',
+    '<rootDir>/libs/morajlab.bit/react-macos-ui/ui/checkbox',
   ],
 };

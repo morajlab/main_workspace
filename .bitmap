@@ -13,5 +13,11 @@
         "mainFile": "index.ts",
         "rootDir": "libs/morajlab.bit/react-macos-ui/ui/button"
     },
+    "ui/checkbox": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "libs/morajlab.bit/react-macos-ui/ui/checkbox"
+    },
     "version": "1.0.64"
 }

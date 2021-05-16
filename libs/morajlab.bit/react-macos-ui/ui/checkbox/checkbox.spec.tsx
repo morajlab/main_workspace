@@ -1,0 +1,11 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { BasicCheckbox } from './checkbox.composition';
+
+describe('checkbox', () => {
+  it('should render with the correct text', () => {
+    const { getByText } = render(<BasicCheckbox />);
+    const rendered = getByText('hello from Checkbox');
+    expect(rendered).toBeTruthy();
+  });
+});

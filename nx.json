@@ -30,6 +30,7 @@
     "morajlab.bit-fluent-app-ui-kit": { "tags": [] },
     "morajlab.bit-fluent-app-ui-kit-ui-commandbar": { "tags": [] },
     "morajlab.bit-react-macos-ui": { "tags": [] },
-    "morajlab.bit-react-macos-ui-ui-button": { "tags": [] }
+    "morajlab.bit-react-macos-ui-ui-button": { "tags": [] },
+    "morajlab.bit-react-macos-ui-ui-checkbox": { "tags": [] }
   }
 }

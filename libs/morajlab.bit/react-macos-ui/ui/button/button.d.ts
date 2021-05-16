@@ -1,17 +1,14 @@
-import type { HTMLAttributes, CSSProperties, FunctionComponent } from 'react';
+import type { HTMLAttributes, FunctionComponent } from 'react';
+import type { IComponentStyles } from '../shared';
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   title: string;
   type?: 'flat' | 'gradient' | 'link';
 }
-
-export interface ICSSProperties extends CSSProperties, Object {}
-
-export interface IButtonStyles extends CSSProperties {
-  [key: string]: ICSSProperties;
-}
 export interface IButtonStyleProps {
   type: IButtonProps['type'];
 }
-export type ButtonStyleFunction = (props: IButtonStyleProps) => IButtonStyles;
+export type ButtonStyleFunction = (
+  props: IButtonStyleProps
+) => IComponentStyles;
 export type ButtonComponent = FunctionComponent<IButtonProps>;

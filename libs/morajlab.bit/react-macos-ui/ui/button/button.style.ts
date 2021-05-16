@@ -1,7 +1,8 @@
-import type { ButtonStyleFunction, IButtonStyles } from './button.d';
+import type { ButtonStyleFunction } from './button.d';
+import type { IComponentStyles } from '../shared';
 
 export const buttonStyles: ButtonStyleFunction = ({ type }) => {
-  const sharedStyles: IButtonStyles = {
+  const sharedStyles: IComponentStyles = {
     lineHeight: '16px',
     fontSize: '13px',
     fontFamily:
@@ -16,7 +17,7 @@ export const buttonStyles: ButtonStyleFunction = ({ type }) => {
     boxShadow: '0 1px rgba(0, 0, 0, .039)',
     padding: '4px 13px',
   };
-  let styles: IButtonStyles = {};
+  let styles: IComponentStyles = {};
 
   if (type === 'gradient') {
     styles = {
