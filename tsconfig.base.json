@@ -20,7 +20,8 @@
       "@workspace-desktop/fluent-app-ui-kit": [
         "libs/fluent-app-ui-kit/index.ts"
       ],
-      "@next10/gui": ["libs/next10/gui/src/index.ts"]
+      "@next10/gui": ["libs/next10/gui/src/index.ts"],
+      "@morajlab/object-assign": ["libs/object-assign/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

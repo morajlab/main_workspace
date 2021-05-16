@@ -48,6 +48,9 @@
     "desktop-e2e": {
       "tags": [],
       "implicitDependencies": ["desktop"]
+    },
+    "object-assign": {
+      "tags": []
     }
   }
 }

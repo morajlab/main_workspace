@@ -1,0 +1,37 @@
+{
+  "name": "@morajlab/object-assign",
+  "version": "0.1.0",
+  "description": "Deeply assign the values of all enumerable-own-properties and symbols from one or more source objects to a target object. Returns the target object.",
+  "homepage": "https://github.com/morteza-jamali/assign-deep",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Brian Woodward (https://twitter.com/doowb)",
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)"
+  ],
+  "repository": "morteza-jamali/assign-deep",
+  "bugs": {
+    "url": "https://github.com/morteza-jamali/assign-deep/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "assign-symbols": "^2.0.2"
+  },
+  "keywords": [
+    "assign",
+    "copy",
+    "deep",
+    "extend",
+    "key",
+    "keys",
+    "merge",
+    "mixin",
+    "object",
+    "prop",
+    "properties",
+    "values"
+  ]
+}

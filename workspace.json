@@ -34,22 +34,15 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/next10",
             "index": "apps/next10/src/index.html",
             "main": "apps/next10/src/main.tsx",
             "polyfills": "apps/next10/src/polyfills.ts",
             "tsConfig": "apps/next10/tsconfig.app.json",
-            "assets": [
-              "apps/next10/src/favicon.ico",
-              "apps/next10/src/assets"
-            ],
-            "styles": [
-              "apps/next10/src/styles.scss"
-            ],
+            "assets": ["apps/next10/src/favicon.ico", "apps/next10/src/assets"],
+            "styles": ["apps/next10/src/styles.scss"],
             "scripts": [],
             "webpackConfig": "nx-react-plugin/webpack"
           },
@@ -92,16 +85,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/next10/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/next10/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/next10"
-          ],
+          "outputs": ["coverage/apps/next10"],
           "options": {
             "jestConfig": "apps/next10/jest.config.js",
             "passWithNoTests": true
@@ -130,9 +119,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/next10-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/next10-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -145,16 +132,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/react-uwp/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/react-uwp/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/react-uwp"
-          ],
+          "outputs": ["coverage/libs/react-uwp"],
           "options": {
             "jestConfig": "libs/react-uwp/jest.config.js",
             "passWithNoTests": true
@@ -170,16 +153,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/fluent-app-ui-kit/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/fluent-app-ui-kit/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/fluent-app-ui-kit"
-          ],
+          "outputs": ["coverage/libs/fluent-app-ui-kit"],
           "options": {
             "jestConfig": "libs/fluent-app-ui-kit/jest.config.js",
             "passWithNoTests": true
@@ -194,18 +173,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/next10/gui",
             "tsConfig": "libs/next10/gui/tsconfig.lib.json",
             "project": "libs/next10/gui/package.json",
             "entryFile": "libs/next10/gui/src/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -220,16 +194,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/next10/gui/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/next10/gui/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/next10/gui"
-          ],
+          "outputs": ["coverage/libs/next10/gui"],
           "options": {
             "jestConfig": "libs/next10/gui/jest.config.js",
             "passWithNoTests": true
@@ -244,9 +214,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/desktop",
             "outputPath": "dist/apps/desktop"
@@ -276,9 +244,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/desktop"
-          ],
+          "outputs": ["coverage/apps/desktop"],
           "options": {
             "jestConfig": "apps/desktop/jest.config.js",
             "passWithNoTests": true
@@ -287,9 +253,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/desktop/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/desktop/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -315,9 +279,39 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/desktop-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/desktop-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "object-assign": {
+      "root": "libs/object-assign",
+      "sourceRoot": "libs/object-assign/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/object-assign/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/object-assign"],
+          "options": {
+            "jestConfig": "libs/object-assign/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/object-assign",
+            "tsConfig": "libs/object-assign/tsconfig.lib.json",
+            "packageJson": "libs/object-assign/package.json",
+            "main": "libs/object-assign/src/index.ts",
+            "assets": ["libs/object-assign/*.md"]
           }
         }
       }
