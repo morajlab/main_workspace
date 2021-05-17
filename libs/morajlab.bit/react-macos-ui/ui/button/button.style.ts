@@ -1,5 +1,5 @@
 import type { ButtonStyleFunction } from './button.d';
-import type { IComponentStyles } from '../shared';
+import type { IComponentStyles } from '@react-macos-ui/types';
 
 export const buttonStyles: ButtonStyleFunction = ({ type }) => {
   const sharedStyles: IComponentStyles = {

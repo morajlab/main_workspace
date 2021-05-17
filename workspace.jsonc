@@ -20,9 +20,7 @@
       }
     },
     "packageManagerArgs": [],
-    "devFilePatterns": [
-      "**/*.spec.ts"
-    ],
+    "devFilePatterns": ["**/*.spec.ts"],
     "strictPeerDependencies": true
   },
   "teambit.workspace/variants": {
