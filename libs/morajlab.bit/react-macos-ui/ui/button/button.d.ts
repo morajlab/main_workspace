@@ -1,5 +1,5 @@
 import type { HTMLAttributes, FunctionComponent } from 'react';
-import type { IComponentStyles } from '../shared';
+import type { IComponentStyles } from '@react-macos-ui/types';
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   title: string;
