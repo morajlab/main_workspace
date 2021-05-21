@@ -1,53 +1,30 @@
 {
+  "npmScope": "workspace",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
-    "workspace.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    ".eslintrc.json": "*",
-    "nx.json": "*"
+    ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "workspace-desktop",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "NzU2ODM1YzMtOTI4ZS00MTE5LWJhYTctMzc5NjYwZWE5MjAxfHJlYWQtd3JpdGU=",
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "ZWEyYWJjZDAtZTMzNS00ODA4LWEzZjItYWRmMGNmMmM5YWNjfHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
     }
   },
-  "projects": {
-    "next10": {
-      "tags": []
-    },
-    "next10-e2e": {
-      "tags": [],
-      "implicitDependencies": ["next10"]
-    },
-    "react-uwp": {
-      "tags": []
-    },
-    "fluent-app-ui-kit": {
-      "tags": []
-    },
-    "next10-gui": {
-      "tags": []
-    },
-    "desktop": {
-      "tags": []
-    },
-    "desktop-e2e": {
-      "tags": [],
-      "implicitDependencies": ["desktop"]
-    }
-  }
+  "projects": {}
 }

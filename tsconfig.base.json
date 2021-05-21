@@ -14,14 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@react-uwp": ["libs/react-uwp/index.ts"],
-      "@react-uwp/*": ["libs/react-uwp/src/*"],
-      "@workspace-desktop/fluent-app-ui-kit": [
-        "libs/fluent-app-ui-kit/index.ts"
-      ],
-      "@next10/gui": ["libs/next10/gui/src/index.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
