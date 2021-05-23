@@ -1,5 +1,0 @@
-## Mock
-
-///
-
-### Examples
