@@ -25,5 +25,15 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "morajlab.bit-moraj-design-system": {
+      "tags": []
+    },
+    "morajlab.bit-moraj-design-system-vanilla": {
+      "tags": []
+    },
+    "morajlab.bit-moraj-design-system-types": {
+      "tags": []
+    }
+  }
 }

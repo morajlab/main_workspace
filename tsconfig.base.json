@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@morajui": ["libs/morajlab.bit/moraj-design-system/index.ts"],
+      "@morajui/vanilla": [
+        "libs/morajlab.bit/moraj-design-system/vanilla/src/index.ts"
+      ],
+      "@morajui/types": [
+        "libs/morajlab.bit/moraj-design-system/types/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

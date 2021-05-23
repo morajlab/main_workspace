@@ -30,5 +30,116 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "morajlab.bit-moraj-design-system": {
+      "root": "libs/morajlab.bit/moraj-design-system",
+      "sourceRoot": "libs/morajlab.bit/moraj-design-system",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/moraj-design-system/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/morajlab.bit/moraj-design-system"],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/moraj-design-system/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/moraj-design-system",
+            "tsConfig": "libs/morajlab.bit/moraj-design-system/tsconfig.lib.json",
+            "packageJson": "libs/morajlab.bit/moraj-design-system/package.json",
+            "main": "libs/morajlab.bit/moraj-design-system/index.ts",
+            "assets": ["libs/morajlab.bit/moraj-design-system/*.md"]
+          }
+        }
+      }
+    },
+    "morajlab.bit-moraj-design-system-vanilla": {
+      "root": "libs/morajlab.bit/moraj-design-system/vanilla",
+      "sourceRoot": "libs/morajlab.bit/moraj-design-system/vanilla/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/moraj-design-system/vanilla/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/morajlab.bit/moraj-design-system/vanilla"],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/moraj-design-system/vanilla/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/moraj-design-system/vanilla",
+            "tsConfig": "libs/morajlab.bit/moraj-design-system/vanilla/tsconfig.lib.json",
+            "packageJson": "libs/morajlab.bit/moraj-design-system/vanilla/package.json",
+            "main": "libs/morajlab.bit/moraj-design-system/vanilla/src/index.ts",
+            "assets": ["libs/morajlab.bit/moraj-design-system/vanilla/*.md"]
+          }
+        }
+      }
+    },
+    "morajlab.bit-moraj-design-system-types": {
+      "root": "libs/morajlab.bit/moraj-design-system/types",
+      "sourceRoot": "libs/morajlab.bit/moraj-design-system/types/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/moraj-design-system/types",
+            "tsConfig": "libs/morajlab.bit/moraj-design-system/types/tsconfig.lib.json",
+            "project": "libs/morajlab.bit/moraj-design-system/types/package.json",
+            "entryFile": "libs/morajlab.bit/moraj-design-system/types/src/index.ts",
+            "external": ["react", "react-dom"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/morajlab.bit/moraj-design-system/types/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/moraj-design-system/types/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/morajlab.bit/moraj-design-system/types"],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/moraj-design-system/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
 }
