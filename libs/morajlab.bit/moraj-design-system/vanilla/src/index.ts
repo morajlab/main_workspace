@@ -1,1 +1,1 @@
-export * from './lib/morajlab.bit-moraj-design-system-vanilla';
+export * from './components/.';

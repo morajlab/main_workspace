@@ -21,6 +21,9 @@
       ],
       "@morajui/types": [
         "libs/morajlab.bit/moraj-design-system/types/src/index.ts"
+      ],
+      "@morajui/globals": [
+        "libs/morajlab.bit/moraj-design-system/globals/src/index.ts"
       ]
     }
   },

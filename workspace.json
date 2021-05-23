@@ -140,6 +140,40 @@
           }
         }
       }
+    },
+    "morajlab.bit-moraj-design-system-globals": {
+      "root": "libs/morajlab.bit/moraj-design-system/globals",
+      "sourceRoot": "libs/morajlab.bit/moraj-design-system/globals/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/morajlab.bit/moraj-design-system/globals/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/morajlab.bit/moraj-design-system/globals"],
+          "options": {
+            "jestConfig": "libs/morajlab.bit/moraj-design-system/globals/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/morajlab.bit/moraj-design-system/globals",
+            "tsConfig": "libs/morajlab.bit/moraj-design-system/globals/tsconfig.lib.json",
+            "packageJson": "libs/morajlab.bit/moraj-design-system/globals/package.json",
+            "main": "libs/morajlab.bit/moraj-design-system/globals/src/index.ts",
+            "assets": ["libs/morajlab.bit/moraj-design-system/globals/*.md"]
+          }
+        }
+      }
     }
   }
 }
