@@ -25,29 +25,5 @@
       }
     }
   },
-  "projects": {
-    "next10": {
-      "tags": []
-    },
-    "next10-e2e": {
-      "tags": [],
-      "implicitDependencies": ["next10"]
-    },
-    "react-uwp": {
-      "tags": []
-    },
-    "fluent-app-ui-kit": {
-      "tags": []
-    },
-    "next10-gui": {
-      "tags": []
-    },
-    "desktop": {
-      "tags": []
-    },
-    "desktop-e2e": {
-      "tags": [],
-      "implicitDependencies": ["desktop"]
-    }
-  }
+  "projects": {}
 }
