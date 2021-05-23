@@ -4,7 +4,7 @@
     "name": "morajlab.bit",
     "icon": "https://static.bit.dev/bit-logo.svg",
     "defaultDirectory": "{scope}/{name}",
-    "defaultScope": "morajlab.fluent-app-ui-kit"
+    "defaultScope": "morajlab.react-macos-ui"
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
@@ -13,10 +13,10 @@
         "@testing-library/react": "11.2.6"
       },
       "peerDependencies": {
-        "@fluentui/react": "8.13.1",
-        "@uifabric/icons": "7.5.23",
-        "react": "17.0.1",
-        "react-dom": "17.0.1"
+        "@fluentui/react": "^8.14.4",
+        "@uifabric/icons": "^7.5.23",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
       }
     },
     "packageManagerArgs": [],

@@ -3,7 +3,6 @@
   "cli": {
     "defaultCollection": "@nrwl/react"
   },
-  "defaultProject": "next10",
   "generators": {
     "@nrwl/react": {
       "application": {
@@ -27,376 +26,6 @@
     }
   },
   "projects": {
-    "next10": {
-      "root": "apps/next10",
-      "sourceRoot": "apps/next10/src",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/next10",
-            "index": "apps/next10/src/index.html",
-            "main": "apps/next10/src/main.tsx",
-            "polyfills": "apps/next10/src/polyfills.ts",
-            "tsConfig": "apps/next10/tsconfig.app.json",
-            "assets": [
-              "apps/next10/src/favicon.ico",
-              "apps/next10/src/assets"
-            ],
-            "styles": [
-              "apps/next10/src/styles.scss"
-            ],
-            "scripts": [],
-            "webpackConfig": "nx-react-plugin/webpack"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/next10/src/environments/environment.ts",
-                  "with": "apps/next10/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "next10:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "next10:build:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/next10/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/next10"
-          ],
-          "options": {
-            "jestConfig": "apps/next10/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "next10-e2e": {
-      "root": "apps/next10-e2e",
-      "sourceRoot": "apps/next10-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/next10-e2e/cypress.json",
-            "tsConfig": "apps/next10-e2e/tsconfig.e2e.json",
-            "devServerTarget": "next10:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "next10:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/next10-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "react-uwp": {
-      "root": "libs/react-uwp",
-      "sourceRoot": "libs/react-uwp/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/react-uwp/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/react-uwp"
-          ],
-          "options": {
-            "jestConfig": "libs/react-uwp/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "next10-gui": {
-      "root": "libs/next10/gui",
-      "sourceRoot": "libs/next10/gui/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/libs/next10/gui",
-            "tsConfig": "libs/next10/gui/tsconfig.lib.json",
-            "project": "libs/next10/gui/package.json",
-            "entryFile": "libs/next10/gui/src/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
-            "babelConfig": "@nrwl/react/plugins/bundle-babel",
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/next10/gui/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/next10/gui"
-          ],
-          "options": {
-            "jestConfig": "libs/next10/gui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "desktop": {
-      "root": "apps/desktop",
-      "sourceRoot": "apps/desktop",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "root": "apps/desktop",
-            "outputPath": "dist/apps/desktop"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "desktop:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "desktop:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "desktop:build:production"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/desktop"
-          ],
-          "options": {
-            "jestConfig": "apps/desktop/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/desktop/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        }
-      }
-    },
-    "desktop-e2e": {
-      "root": "apps/desktop-e2e",
-      "sourceRoot": "apps/desktop-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/desktop-e2e/cypress.json",
-            "tsConfig": "apps/desktop-e2e/tsconfig.e2e.json",
-            "devServerTarget": "desktop:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "desktop:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/desktop-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "morajlab.bit-fluent-app-ui-kit": {
-      "root": "libs/morajlab.bit/fluent-app-ui-kit",
-      "sourceRoot": "libs/morajlab.bit/fluent-app-ui-kit",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/libs/morajlab.bit/fluent-app-ui-kit",
-            "tsConfig": "libs/morajlab.bit/fluent-app-ui-kit/tsconfig.lib.json",
-            "project": "libs/morajlab.bit/fluent-app-ui-kit/package.json",
-            "entryFile": "libs/morajlab.bit/fluent-app-ui-kit/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
-            "babelConfig": "@nrwl/react/plugins/bundle-babel",
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/morajlab.bit/fluent-app-ui-kit/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/fluent-app-ui-kit"
-          ],
-          "options": {
-            "jestConfig": "libs/morajlab.bit/fluent-app-ui-kit/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "morajlab.bit-fluent-app-ui-kit-ui-commandbar": {
-      "root": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
-      "sourceRoot": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar",
-            "tsConfig": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/tsconfig.lib.json",
-            "project": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/package.json",
-            "entryFile": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
-            "babelConfig": "@nrwl/react/plugins/bundle-babel",
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar"
-          ],
-          "options": {
-            "jestConfig": "libs/morajlab.bit/fluent-app-ui-kit/ui/commandbar/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "morajlab.bit-react-macos-ui": {
       "root": "libs/morajlab.bit/react-macos-ui",
       "sourceRoot": "libs/morajlab.bit/react-macos-ui",
@@ -404,18 +33,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/morajlab.bit/react-macos-ui",
             "tsConfig": "libs/morajlab.bit/react-macos-ui/tsconfig.lib.json",
             "project": "libs/morajlab.bit/react-macos-ui/package.json",
             "entryFile": "libs/morajlab.bit/react-macos-ui/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -437,9 +61,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/react-macos-ui"
-          ],
+          "outputs": ["coverage/libs/morajlab.bit/react-macos-ui"],
           "options": {
             "jestConfig": "libs/morajlab.bit/react-macos-ui/jest.config.js",
             "passWithNoTests": true
@@ -454,18 +76,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/morajlab.bit/react-macos-ui/ui/button",
             "tsConfig": "libs/morajlab.bit/react-macos-ui/ui/button/tsconfig.lib.json",
             "project": "libs/morajlab.bit/react-macos-ui/ui/button/package.json",
             "entryFile": "libs/morajlab.bit/react-macos-ui/ui/button/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -487,9 +104,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/react-macos-ui/ui/button"
-          ],
+          "outputs": ["coverage/libs/morajlab.bit/react-macos-ui/ui/button"],
           "options": {
             "jestConfig": "libs/morajlab.bit/react-macos-ui/ui/button/jest.config.js",
             "passWithNoTests": true
@@ -504,18 +119,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/morajlab.bit/react-macos-ui/ui/checkbox",
             "tsConfig": "libs/morajlab.bit/react-macos-ui/ui/checkbox/tsconfig.lib.json",
             "project": "libs/morajlab.bit/react-macos-ui/ui/checkbox/package.json",
             "entryFile": "libs/morajlab.bit/react-macos-ui/ui/checkbox/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -537,9 +147,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/react-macos-ui/ui/checkbox"
-          ],
+          "outputs": ["coverage/libs/morajlab.bit/react-macos-ui/ui/checkbox"],
           "options": {
             "jestConfig": "libs/morajlab.bit/react-macos-ui/ui/checkbox/jest.config.js",
             "passWithNoTests": true
@@ -554,18 +162,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/morajlab.bit/react-macos-ui/types",
             "tsConfig": "libs/morajlab.bit/react-macos-ui/types/tsconfig.lib.json",
             "project": "libs/morajlab.bit/react-macos-ui/types/package.json",
             "entryFile": "libs/morajlab.bit/react-macos-ui/types/index.ts",
-            "external": [
-              "react",
-              "react-dom"
-            ],
+            "external": ["react", "react-dom"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -587,9 +190,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/morajlab.bit/react-macos-ui/types"
-          ],
+          "outputs": ["coverage/libs/morajlab.bit/react-macos-ui/types"],
           "options": {
             "jestConfig": "libs/morajlab.bit/react-macos-ui/types/jest.config.js",
             "passWithNoTests": true
