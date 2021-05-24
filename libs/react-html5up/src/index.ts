@@ -1,1 +1,1 @@
-export * from './components/.';
+export * from '@react-html5up-components';
