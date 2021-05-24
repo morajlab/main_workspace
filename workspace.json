@@ -225,6 +225,50 @@
           }
         }
       }
+    },
+    "react-html5up-src-components-src-lib-hyperspace": {
+      "root": "libs/react-html5up/src/components/src/lib/hyperspace",
+      "sourceRoot": "libs/react-html5up/src/components/src/lib/hyperspace/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/react-html5up/src/components/src/lib/hyperspace",
+            "tsConfig": "libs/react-html5up/src/components/src/lib/hyperspace/tsconfig.lib.json",
+            "project": "libs/react-html5up/src/components/src/lib/hyperspace/package.json",
+            "entryFile": "libs/react-html5up/src/components/src/lib/hyperspace/src/index.ts",
+            "external": ["react", "react-dom"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/react-html5up/src/components/src/lib/hyperspace/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/components/src/lib/hyperspace/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-html5up/src/components/src/lib/hyperspace"
+          ],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/components/src/lib/hyperspace/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
