@@ -9,15 +9,12 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "workspace",
+  "npmScope": "test",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "ZWEyYWJjZDAtZTMzNS00ODA4LWEzZjItYWRmMGNmMmM5YWNjfHJlYWQtd3JpdGU=",
-        "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },

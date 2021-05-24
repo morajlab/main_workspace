@@ -1,34 +1,23 @@
 {
   "version": 2,
   "cli": {
-    "defaultCollection": "@nrwl/gatsby"
+    "defaultCollection": "@nrwl/react"
   },
   "generators": {
     "@nrwl/react": {
       "application": {
-        "style": "css",
+        "style": "scss",
         "linter": "eslint",
         "strict": true,
         "babel": true
       },
       "component": {
-        "style": "css"
+        "style": "scss"
       },
       "library": {
-        "style": "css",
+        "style": "scss",
         "linter": "eslint",
         "strict": true
-      }
-    },
-    "@nrwl/gatsby": {
-      "application": {
-        "style": "css"
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
       }
     }
   },
