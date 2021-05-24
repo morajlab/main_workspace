@@ -3,11 +3,13 @@
   "cli": {
     "defaultCollection": "@nrwl/react"
   },
+  "defaultProject": "react-html5up-templates-hyperspace-react-html5up-hyperspace",
   "generators": {
     "@nrwl/react": {
       "application": {
         "style": "scss",
         "linter": "eslint",
+        "strict": true,
         "babel": true
       },
       "component": {
@@ -15,7 +17,8 @@
       },
       "library": {
         "style": "scss",
-        "linter": "eslint"
+        "linter": "eslint",
+        "strict": true
       }
     },
     "@nrwl/next": {
@@ -30,5 +33,116 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "react-html5up-templates-hyperspace-react-html5up-hyperspace": {
+      "root": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace",
+      "sourceRoot": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/react-html5up-templates/hyperspace/react-html5up-hyperspace",
+            "index": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/index.html",
+            "main": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/main.tsx",
+            "polyfills": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/polyfills.ts",
+            "tsConfig": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/tsconfig.app.json",
+            "assets": [
+              "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/favicon.ico",
+              "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/assets"
+            ],
+            "styles": [
+              "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/styles.scss"
+            ],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/environments/environment.ts",
+                  "with": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "react-html5up-templates-hyperspace-react-html5up-hyperspace:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "react-html5up-templates-hyperspace-react-html5up-hyperspace:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/react-html5up-templates/hyperspace/react-html5up-hyperspace"
+          ],
+          "options": {
+            "jestConfig": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "react-html5up-templates-hyperspace-react-html5up-hyperspace-e2e": {
+      "root": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace-e2e",
+      "sourceRoot": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace-e2e/cypress.json",
+            "tsConfig": "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace-e2e/tsconfig.e2e.json",
+            "devServerTarget": "react-html5up-templates-hyperspace-react-html5up-hyperspace:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "react-html5up-templates-hyperspace-react-html5up-hyperspace:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  }
 }

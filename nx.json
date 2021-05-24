@@ -25,5 +25,15 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "react-html5up-templates-hyperspace-react-html5up-hyperspace": {
+      "tags": []
+    },
+    "react-html5up-templates-hyperspace-react-html5up-hyperspace-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "react-html5up-templates-hyperspace-react-html5up-hyperspace"
+      ]
+    }
+  }
 }
