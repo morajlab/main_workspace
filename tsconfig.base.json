@@ -24,6 +24,9 @@
       ],
       "@workspace-desktop/react-html5up/src/components/src/lib/hyperspace/src/lib/button": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/button/src/index.ts"
+      ],
+      "@workspace-desktop/react-html5up/src/components/src/lib/hyperspace/src/lib/icon": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/icon/src/index.ts"
       ]
     }
   },

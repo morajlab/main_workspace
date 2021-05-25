@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/components',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/button',
+    '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/icon',
   ],
 };
