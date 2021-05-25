@@ -5,9 +5,15 @@ export interface IButtonStyleProps {
   size: IButtonProps['size'];
   primary: IButtonProps['primary'];
   disable: IButtonProps['disable'];
+  icon: IButtonProps['icon'] | boolean;
 }
 
-export const ButtonStyles = ({ size, disable, primary }: IButtonStyleProps) => {
+export const ButtonStyles = ({
+  size,
+  disable,
+  primary,
+  icon,
+}: IButtonStyleProps) => {
   let fontSize = '0.6em';
   let backgroundColor = 'transparent';
   let color = '#ffffff';
@@ -88,6 +94,17 @@ export const ButtonStyles = ({ size, disable, primary }: IButtonStyleProps) => {
           position: 'absolute',
           top: 0,
           width: '100%',
+        },
+      })
+    );
+  }
+
+  if (icon) {
+    styles = css(
+      styles,
+      css({
+        '& svg.svg-inline--fa': {
+          marginRight: '0.75em',
         },
       })
     );
