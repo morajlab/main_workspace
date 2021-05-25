@@ -22,10 +22,10 @@
       "@react-html5up-components/hyperspace": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/index.ts"
       ],
-      "@workspace-desktop/react-html5up/src/components/src/lib/hyperspace/src/lib/button": [
+      "@react-html5up-components/hyperspace/button": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/button/src/index.ts"
       ],
-      "@workspace-desktop/react-html5up/src/components/src/lib/hyperspace/src/lib/icon": [
+      "@react-html5up-components/hyperspace/icon": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/icon/src/index.ts"
       ]
     }

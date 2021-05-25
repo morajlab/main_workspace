@@ -1,4 +1,12 @@
 {
   "name": "@react-html5up-components/hyperspace",
-  "version": "0.0.1"
+  "version": "0.1.0",
+  "dependencies": {
+    "glamor": "^2.20.40",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14"
+  }
 }
