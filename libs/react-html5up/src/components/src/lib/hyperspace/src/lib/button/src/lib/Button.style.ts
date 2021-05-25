@@ -1,13 +1,13 @@
-import { css, after } from 'glamor';
+import { css } from 'glamor';
 import { IButtonProps } from './Button';
 
 export interface IButtonStyleProps {
   size: IButtonProps['size'];
-  type: IButtonProps['type'];
+  primary: IButtonProps['primary'];
   disable: IButtonProps['disable'];
 }
 
-export const ButtonStyles = ({ size, disable, type }: IButtonStyleProps) => {
+export const ButtonStyles = ({ size, disable, primary }: IButtonStyleProps) => {
   let fontSize = '0.6em';
   let backgroundColor = 'transparent';
   let color = '#ffffff';
@@ -21,7 +21,7 @@ export const ButtonStyles = ({ size, disable, type }: IButtonStyleProps) => {
     fontSize = '0.4em';
   }
 
-  if (type === 'primary') {
+  if (primary) {
     backgroundColor = '#ffffff';
     color = '#312450';
   }
@@ -32,7 +32,7 @@ export const ButtonStyles = ({ size, disable, type }: IButtonStyleProps) => {
     pointerEvents = 'none';
   }
 
-  let styles: any = {
+  let styles = css({
     appearance: 'none',
     transition: 'border-color 0.2s ease',
     backgroundColor,
@@ -58,36 +58,39 @@ export const ButtonStyles = ({ size, disable, type }: IButtonStyleProps) => {
     whiteSpace: 'nowrap',
     ':hover': {
       borderColor: 'rgba(255,255,255,0.55) !important',
-      ...after({
+      ':after': {
         opacity: '0.05',
         transform: 'scale(1)',
-      }),
+      },
       ':active': {
         borderColor: '#ffffff !important',
-        ...after({
+        ':after': {
           opacity: '0.1',
-        }),
+        },
       },
     },
-  };
+  });
 
-  if (type !== 'primary') {
-    styles = css(styles, {
-      ...after({
-        transform: 'scale(0.25)',
-        pointerEvents: 'none',
-        transition: 'opacity 0.2 ease, transform 0.2 ease',
-        background: '#ffffff',
-        borderRadius: '3em',
-        content: '',
-        height: '100%',
-        left: 0,
-        opacity: 0,
-        position: 'absolute',
-        top: 0,
-        width: '100%',
-      }),
-    });
+  if (!primary) {
+    styles = css(
+      styles,
+      css({
+        ':after': {
+          transform: 'scale(0.25)',
+          pointerEvents: 'none',
+          transition: 'opacity 0.2s ease, transform 0.2s ease',
+          background: '#ffffff',
+          borderRadius: '3em',
+          content: "''",
+          height: '100%',
+          left: 0,
+          opacity: 0,
+          position: 'absolute',
+          top: 0,
+          width: '100%',
+        },
+      })
+    );
   }
 
   return styles;

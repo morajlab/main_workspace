@@ -4,7 +4,7 @@ import { Button } from '@react-html5up-components/hyperspace';
 export const App = () => {
   return (
     <div style={{ padding: '100px', background: '#2f82ff' }}>
-      <Button title="Default Button" />
+      <Button title="Default Button" primary />
     </div>
   );
 };

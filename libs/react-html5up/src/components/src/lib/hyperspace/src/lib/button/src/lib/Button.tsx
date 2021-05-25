@@ -1,32 +1,31 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 import { ButtonStyles } from './Button.style';
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends HTMLAttributes<HTMLAnchorElement> {
   title: string;
-  type?: 'primary' | 'default';
   size?: 'small' | 'default' | 'large';
+  primary?: boolean;
   disable?: boolean;
 }
 
 export const Button: FunctionComponent<IButtonProps> = ({
-  type,
+  primary,
   size,
   disable,
   title,
   ...rest
 }) => {
   return (
-    <button
-      type="button"
+    <a
       {...rest}
       {...ButtonStyles({
         disable: disable ?? false,
         size: size ?? 'default',
-        type: type ?? 'default',
+        primary: primary ?? false,
       })}
     >
       {title}
-    </button>
+    </a>
   );
 };
 
