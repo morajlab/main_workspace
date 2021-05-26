@@ -1,12 +1,10 @@
 import React from 'react';
-import { Button } from '@react-html5up-components/hyperspace/button';
-import { Icon, faCoffee } from '@react-html5up-components/hyperspace/icon';
+import { Link } from '@react-html5up-components/hyperspace/link';
 
 export const App = () => {
   return (
-    <div style={{ padding: '100px', background: '#2f82ff' }}>
-      <Button title="Default Button" icon={faCoffee} primary />
-      <Button title="Default Button" primary/>
+    <div style={{ padding: '100px', background: '#312450' }}>
+      <Link text="Example Link" to="https://moraj.ir" />
     </div>
   );
 };

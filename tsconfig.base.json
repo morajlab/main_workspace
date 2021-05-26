@@ -27,6 +27,9 @@
       ],
       "@react-html5up-components/hyperspace/icon": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/icon/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/link": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/link/src/index.ts"
       ]
     }
   },
