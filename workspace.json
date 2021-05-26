@@ -403,6 +403,31 @@
           }
         }
       }
+    },
+    "react-html5up-src-components-src-lib-hyperspace-src-lib-header": {
+      "root": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header",
+      "sourceRoot": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header"
+          ],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
