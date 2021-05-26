@@ -1,10 +1,10 @@
 import React from 'react';
-import { H3 } from '@react-html5up-components/hyperspace/heading';
+import { Quote } from '@react-html5up-components/hyperspace/quote';
 
 export const App = () => {
   return (
     <div style={{ padding: '100px', background: '#312450' }}>
-      <H3 text="Example heading" />
+      <Quote text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, eligendi provident ad magni modi accusamus mollitia et nulla illo vero qui, perspiciatis at. Esse totam libero aliquid debitis saepe eius!" />
     </div>
   );
 };
