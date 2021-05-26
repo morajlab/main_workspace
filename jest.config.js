@@ -11,5 +11,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/quote',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/code',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/text',
+    '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/list',
   ],
 };
