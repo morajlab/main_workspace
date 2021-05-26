@@ -9,7 +9,7 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
         "project": [
-          "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header/tsconfig.*?.json"
+          "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/heading/tsconfig.*?.json"
         ]
       },
       "rules": {}

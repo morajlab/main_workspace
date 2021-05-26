@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from '@react-html5up-components/hyperspace/link';
+import { H3 } from '@react-html5up-components/hyperspace/heading';
 
 export const App = () => {
   return (
     <div style={{ padding: '100px', background: '#312450' }}>
-      <Link text="Example Link" to="https://moraj.ir" />
+      <H3 text="Example heading" />
     </div>
   );
 };

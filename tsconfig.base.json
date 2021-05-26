@@ -31,8 +31,8 @@
       "@react-html5up-components/hyperspace/link": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/link/src/index.ts"
       ],
-      "@react-html5up-components/hyperspace/header": [
-        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/header/src/index.ts"
+      "@react-html5up-components/hyperspace/heading": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/heading/src/index.ts"
       ]
     }
   },
