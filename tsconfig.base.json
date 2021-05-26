@@ -36,6 +36,9 @@
       ],
       "@react-html5up-components/hyperspace/quote": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/quote/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/code": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/code/src/index.ts"
       ]
     }
   },
