@@ -4,3 +4,4 @@ export * from './link/src/.';
 export * from './heading/src/.';
 export * from './quote/src/.';
 export * from './code/src/.';
+export * from './text/src/.';

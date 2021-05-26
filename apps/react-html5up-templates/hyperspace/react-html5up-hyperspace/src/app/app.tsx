@@ -1,10 +1,10 @@
 import React from 'react';
-import { Code } from '@react-html5up-components/hyperspace/code';
+import { Text } from '@react-html5up-components/hyperspace/text';
 
 export const App = () => {
   return (
     <div style={{ padding: '100px', background: '#312450' }}>
-      <Code content="This is source code" />
+      <Text text="This example content for text component" />
     </div>
   );
 };
