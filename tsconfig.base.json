@@ -51,6 +51,9 @@
       ],
       "@react-html5up-components/hyperspace/input": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/input/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/radio": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/radio/src/index.ts"
       ]
     }
   },
