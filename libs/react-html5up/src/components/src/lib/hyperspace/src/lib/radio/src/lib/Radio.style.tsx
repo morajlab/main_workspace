@@ -49,13 +49,15 @@ export const RadioStyles = ({}: IRadioStyleProps) => {
       '&:before': {
         background: '#ffffff',
         borderColor: '#ffffff',
-        color: '#b74e91',
-        content: `url('${iconURL({ icon: faCheck })}')`,
-        fontStyle: 'normal',
-        fontVariant: 'normal',
+        content: `url('${iconURL({
+          icon: faCheck,
+          color: '#b74e91',
+          style: {
+            transform: 'scale(0.6)',
+          },
+        })}')`,
         textRendering: 'auto',
         textTransform: 'none !important',
-        fontWeight: 900,
         cursor: 'pointer',
       },
     },

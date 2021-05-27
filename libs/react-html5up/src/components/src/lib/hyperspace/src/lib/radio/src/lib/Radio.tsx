@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes, Fragment } from 'react';
+import React, { FunctionComponent, HTMLAttributes, useState } from 'react';
 import { RadioStyles } from './Radio.style';
 
 export interface IRadioProps extends HTMLAttributes<HTMLInputElement> {
@@ -17,18 +17,20 @@ export const Radio: FunctionComponent<IRadioProps> = ({
   onChange,
   ...rest
 }) => {
+  const [checkedState, setCheckState] = useState(false);
+
   return (
-    <Fragment>
+    <div className={`radio-button-container-${id}`}>
       <input
         type="radio"
         id={id}
-        checked={checked ?? false}
+        checked={checkedState}
         onChange={onChange ?? (() => {})}
         {...rest}
         {...RadioStyles({})}
       />
       <label htmlFor={id}>{label}</label>
-    </Fragment>
+    </div>
   );
 };
 

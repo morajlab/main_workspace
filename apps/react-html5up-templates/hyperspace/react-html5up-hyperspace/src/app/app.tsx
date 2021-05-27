@@ -7,24 +7,7 @@ export const App = () => {
       <Radio
         id="firstRadio"
         label="First radio"
-        name="demo-radio"
         checked
-        onChange={() => {
-          console.log('hello workd');
-        }}
-      />
-      <Radio
-        id="secondRadio"
-        label="Second radio"
-        name="demo-radio"
-        onChange={() => {
-          console.log('hello workd');
-        }}
-      />
-      <Radio
-        id="thirdRadio"
-        label="Third radio"
-        name="demo-radio"
         onChange={() => {
           console.log('hello workd');
         }}
