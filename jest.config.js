@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/text',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/list',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table',
+    '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/input',
   ],
 };

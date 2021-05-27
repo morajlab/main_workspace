@@ -48,6 +48,9 @@
       ],
       "@react-html5up-components/hyperspace/table": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/input": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/input/src/index.ts"
       ]
     }
   },

@@ -7,3 +7,4 @@ export * from './code/src/.';
 export * from './text/src/.';
 export * from './list/src/.';
 export * from './table/src/.';
+export * from './input/src/.';
