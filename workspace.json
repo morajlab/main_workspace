@@ -528,6 +528,31 @@
           }
         }
       }
+    },
+    "react-html5up-src-components-src-lib-hyperspace-src-lib-table": {
+      "root": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table",
+      "sourceRoot": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table"
+          ],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/table/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

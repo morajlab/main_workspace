@@ -5,4 +5,5 @@ export * from './heading/src/.';
 export * from './quote/src/.';
 export * from './code/src/.';
 export * from './text/src/.';
-export * from './link/src/.';
+export * from './list/src/.';
+export * from './table/src/.';
