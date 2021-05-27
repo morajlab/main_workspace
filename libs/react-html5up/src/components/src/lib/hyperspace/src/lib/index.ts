@@ -9,3 +9,4 @@ export * from './list/src/.';
 export * from './table/src/.';
 export * from './input/src/.';
 export * from './radio/src/.';
+export * from './navbar/src/.';
