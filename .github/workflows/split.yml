@@ -3,7 +3,7 @@ name: 'Packages Split'
 on:
   push:
     branches:
-      - master
+      - react-html5up-templates-beta
     tags:
       - '*'
 
@@ -20,89 +20,24 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - react-uwp_local_path: 'react-uwp'
-            next10_local_path: 'next10'
-            fluent-app-ui-kit_local_path: 'fluent-app-ui-kit'
-            react-html5up-templates_local_path: 'react-html5up'
+          - react-html5up-templates_local_path: 'react-html5up'
+            react-html5up-templates_repository_name: 'react-html5up-templates'
 
     steps:
       - uses: actions/checkout@v2
 
       # no tag
-      - name: 'Split react-uwp repository'
-        if: "!startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          package-directory: 'libs/${{ matrix.package.react-uwp_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.react-uwp_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
-      - name: 'Split next10 repository'
-        if: "!startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          package-directory: 'apps/${{ matrix.package.next10_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.next10_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
-      - name: 'Split fluent-app-ui-kit repository'
-        if: "!startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          package-directory: 'libs/${{ matrix.package.fluent-app-ui-kit_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.fluent-app-ui-kit_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
       - name: 'Split react-html5up-templates repository'
         if: "!startsWith(github.ref, 'refs/tags/')"
         uses: 'symplify/monorepo-split-github-action@2.0'
         with:
           package-directory: 'libs/${{ matrix.package.react-html5up-templates_local_path }}'
           split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.react-html5up-templates_local_path }}'
+          split-repository-name: '${{ matrix.package.react-html5up-templates_repository_name }}'
           branch: 'master'
           user-name: '${{ env.GITHUB_USERNAME }}'
           user-email: '${{ env.GITHUB_EMAIL }}'
       # with tag
-      - name: 'Split react-uwp repository'
-        if: "startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          tag: ${GITHUB_REF#refs/tags/}
-          package-directory: 'libs/${{ matrix.package.react-uwp_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.react-uwp_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
-      - name: 'Split next10 repository'
-        if: "startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          tag: ${GITHUB_REF#refs/tags/}
-          package-directory: 'apps/${{ matrix.package.next10_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.next10_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
-      - name: 'Split fluent-app-ui-kit repository'
-        if: "startsWith(github.ref, 'refs/tags/')"
-        uses: 'symplify/monorepo-split-github-action@2.0'
-        with:
-          tag: ${GITHUB_REF#refs/tags/}
-          package-directory: 'libs/${{ matrix.package.fluent-app-ui-kit_local_path }}'
-          split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.fluent-app-ui-kit_local_path }}'
-          branch: 'master'
-          user-name: '${{ env.GITHUB_USERNAME }}'
-          user-email: '${{ env.GITHUB_EMAIL }}'
       - name: 'Split react-html5up-templates repository'
         if: "startsWith(github.ref, 'refs/tags/')"
         uses: 'symplify/monorepo-split-github-action@2.0'
@@ -110,7 +45,7 @@ jobs:
           tag: ${GITHUB_REF#refs/tags/}
           package-directory: 'libs/${{ matrix.package.react-html5up-templates_local_path }}'
           split-repository-organization: '${{ env.GITHUB_USERNAME }}'
-          split-repository-name: '${{ matrix.package.react-html5up-templates_local_path }}'
+          split-repository-name: '${{ matrix.package.react-html5up-templates_repository_name }}'
           branch: 'master'
           user-name: '${{ env.GITHUB_USERNAME }}'
           user-email: '${{ env.GITHUB_EMAIL }}'
