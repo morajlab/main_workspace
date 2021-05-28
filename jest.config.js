@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/input',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/radio',
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/navbar',
+    '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer',
   ],
 };

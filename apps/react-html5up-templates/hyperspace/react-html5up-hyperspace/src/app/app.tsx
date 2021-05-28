@@ -1,19 +1,17 @@
-import React from 'react';
-import {
-  Navbar,
-  INavbarProps,
-} from '@react-html5up-components/hyperspace/navbar';
-
-const list: INavbarProps['navList'] = [
-  { title: 'Home' },
-  { title: 'Products', active: true },
-  { title: 'Profile' },
-];
+import React, { Fragment } from 'react';
+import { Footer } from '@react-html5up-components/hyperspace/footer';
 
 export const App = () => {
   return (
     <div style={{ padding: '100px', background: '#312450' }}>
-      <Navbar title="MorajLab" navList={list} />
+      <Footer
+        list={[
+          '© Untitled. All rights reserved',
+          <Fragment>
+            © Untitled. All rights reserved <a href="#!">Google</a>
+          </Fragment>,
+        ]}
+      />
     </div>
   );
 };

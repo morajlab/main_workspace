@@ -57,6 +57,9 @@
       ],
       "@react-html5up-components/hyperspace/navbar": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/navbar/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/footer": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer/src/index.ts"
       ]
     }
   },

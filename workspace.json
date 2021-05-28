@@ -628,6 +628,31 @@
           }
         }
       }
+    },
+    "react-html5up-src-components-src-lib-hyperspace-src-lib-footer": {
+      "root": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer",
+      "sourceRoot": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer"
+          ],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
