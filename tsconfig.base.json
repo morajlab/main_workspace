@@ -60,6 +60,9 @@
       ],
       "@react-html5up-components/hyperspace/footer": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/footer/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/sidenav": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav/src/index.ts"
       ]
     }
   },

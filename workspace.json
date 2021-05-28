@@ -653,6 +653,31 @@
           }
         }
       }
+    },
+    "react-html5up-src-components-src-lib-hyperspace-src-lib-sidenav": {
+      "root": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav",
+      "sourceRoot": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav"
+          ],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

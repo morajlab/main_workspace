@@ -11,3 +11,4 @@ export * from './input/src/.';
 export * from './radio/src/.';
 export * from './navbar/src/.';
 export * from './footer/src/.';
+export * from './sidenav/src/.';
