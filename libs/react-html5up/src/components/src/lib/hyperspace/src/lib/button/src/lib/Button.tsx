@@ -1,14 +1,16 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, createElement, Fragment } from 'react';
 import { ButtonStyles } from './Button.style';
 import { Icon } from '@react-html5up-components/hyperspace/icon';
 import type { IconDefinition } from '@react-html5up-components/hyperspace/icon';
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps {
   title: string;
   size?: 'small' | 'default' | 'large';
   primary?: boolean;
   disable?: boolean;
   icon?: IconDefinition;
+  as?: 'button' | 'link';
+  to?: string;
 }
 
 export const Button: FunctionComponent<IButtonProps> = ({
@@ -17,22 +19,28 @@ export const Button: FunctionComponent<IButtonProps> = ({
   disable,
   title,
   icon,
+  as,
+  to,
   ...rest
 }) => {
-  return (
-    <button
-      type="button"
-      {...rest}
-      {...ButtonStyles({
+  const element: 'a' | 'button' = as ? (as === 'link' ? 'a' : as) : 'button';
+
+  return createElement(
+    element,
+    {
+      ...rest,
+      ...ButtonStyles({
         disable: disable ?? false,
         size: size ?? 'default',
         primary: primary ?? false,
         icon: icon ?? false,
-      })}
-    >
+      }),
+      ...(element === 'a' ? { href: to } : { typeof: 'button' }),
+    },
+    <Fragment>
       {icon ? <Icon icon={icon} /> : null}
       {title}
-    </button>
+    </Fragment>
   );
 };
 

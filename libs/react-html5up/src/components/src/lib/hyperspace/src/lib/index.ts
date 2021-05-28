@@ -12,3 +12,4 @@ export * from './radio/src/.';
 export * from './navbar/src/.';
 export * from './footer/src/.';
 export * from './sidenav/src/.';
+export * from './intro/src/.';

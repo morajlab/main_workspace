@@ -63,6 +63,9 @@
       ],
       "@react-html5up-components/hyperspace/sidenav": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/sidenav/src/index.ts"
+      ],
+      "@react-html5up-components/hyperspace/intro": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/intro/src/index.ts"
       ]
     }
   },

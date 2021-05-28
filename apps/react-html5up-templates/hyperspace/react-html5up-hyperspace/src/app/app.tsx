@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
-import { SideNav } from '@react-html5up-components/hyperspace/sidenav';
+import { Intro } from '@react-html5up-components/hyperspace/intro';
 
 export const App = () => {
   return (
-    <SideNav
-      navsList={[
-        { title: 'First' },
-        { title: 'Home', active: true },
-        { title: 'FAQ' },
-        { title: 'About us' },
-      ]}
+    <Intro
+      title="Hyperspace"
+      description="Just another fine responsive site template designed by HTML5 UP
+    and released for free under the Creative Commons."
+      btnLink="#!"
+      btnTitle="Explore"
+      backgroundImage="https://raw.githubusercontent.com/morteza-jamali/react-html5up-templates/react-html5up-templates-beta/hyperspace/assets/css/images/intro.svg"
     />
   );
 };
