@@ -1,44 +1,65 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { Button, IButtonProps } from './Button';
+import { faGift } from '@react-html5up-components/hyperspace/icon';
 
 export default {
   component: Button,
   title: 'Components/Button',
-  argTypes: {
-    size: {
-      options: ['small', 'large', 'default'],
-      control: {
-        type: 'select',
-      },
-    },
-  },
 };
 
 const Template: Story<IButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 export const Primary = Template.bind({});
-export const Large = Template.bind({});
-export const Small = Template.bind({});
+export const Size = Template.bind({});
+export const Disable = Template.bind({});
+export const Icon = Template.bind({});
+export const Link = Template.bind({});
 
 Default.args = {
   title: 'Default Button',
-  size: 'default',
 };
 
 Primary.args = {
   title: 'Primary Button',
-  size: 'default',
   primary: true,
 };
 
-Large.args = {
-  title: 'Large Button',
-  size: 'large',
+Size.args = {
+  title: 'Different Button Size',
+  size: 'default',
+};
+Size.argTypes = {
+  size: {
+    options: ['small', 'large', 'default'],
+    control: {
+      type: 'select',
+    },
+  },
 };
 
-Small.args = {
-  title: 'Small Button',
-  size: 'small',
+Disable.args = {
+  title: 'Disabled Button',
+  disable: true,
+};
+
+Icon.args = {
+  title: 'Icon Button',
+  icon: faGift,
+  primary: false,
+};
+
+Link.args = {
+  title: 'Link Button',
+  as: 'link',
+  to: 'https://github.com/morteza-jamali/react-html5up-templates',
+};
+Link.argTypes = {
+  as: {
+    options: ['link', 'button'],
+    control: {
+      type: 'radio',
+    },
+  },
 };
