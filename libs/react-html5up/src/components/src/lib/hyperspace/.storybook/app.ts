@@ -9,4 +9,11 @@ export const StoryGroups = () => ({
       },
     };
   },
+  Demos() {
+    return {
+      Pages(name: string) {
+        return `Demos/Pages/${name}`;
+      },
+    };
+  },
 });
