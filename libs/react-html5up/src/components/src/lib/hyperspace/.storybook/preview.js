@@ -7,3 +7,11 @@ addParameters({
     page: DocsPage,
   },
 });
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Docs', 'Components'],
+    },
+  },
+};
