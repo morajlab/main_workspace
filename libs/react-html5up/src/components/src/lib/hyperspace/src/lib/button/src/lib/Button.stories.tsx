@@ -1,11 +1,14 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import { StoryGroups } from '@react-html5up-components/hyperspace/.storybook/app';
 import { Button, IButtonProps } from './Button';
 import { faGift } from '@react-html5up-components/hyperspace/icon';
 
+const { UIComponents } = StoryGroups();
+
 export default {
   component: Button,
-  title: 'Components/Button',
+  title: UIComponents('Button'),
 };
 
 const Template: Story<IButtonProps> = (args) => <Button {...args} />;

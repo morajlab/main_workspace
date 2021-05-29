@@ -22,6 +22,9 @@
       "@react-html5up-components/hyperspace": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/index.ts"
       ],
+      "@react-html5up-components/hyperspace/.storybook/*": [
+        "libs/react-html5up/src/components/src/lib/hyperspace/.storybook/*"
+      ],
       "@react-html5up-components/hyperspace/button": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/button/src/index.ts"
       ],
