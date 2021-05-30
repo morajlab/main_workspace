@@ -70,6 +70,9 @@
       ],
       "@react-html5up-components/hyperspace/intro": [
         "libs/react-html5up/src/components/src/lib/hyperspace/src/lib/intro/src/index.ts"
+      ],
+      "@react-html5up-utilities": [
+        "libs/react-html5up/src/utilities/src/index.ts"
       ]
     }
   },

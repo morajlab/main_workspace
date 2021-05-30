@@ -703,6 +703,48 @@
           }
         }
       }
+    },
+    "react-html5up-src-utilities": {
+      "root": "libs/react-html5up/src/utilities",
+      "sourceRoot": "libs/react-html5up/src/utilities/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/react-html5up/src/utilities",
+            "tsConfig": "libs/react-html5up/src/utilities/tsconfig.lib.json",
+            "project": "libs/react-html5up/src/utilities/package.json",
+            "entryFile": "libs/react-html5up/src/utilities/src/index.ts",
+            "external": ["react", "react-dom"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/react-html5up/src/utilities/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-html5up/src/utilities/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/react-html5up/src/utilities"],
+          "options": {
+            "jestConfig": "libs/react-html5up/src/utilities/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
