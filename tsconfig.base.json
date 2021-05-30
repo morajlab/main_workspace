@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "glamor/*": ["node_modules/glamor/*"],
       "@react-html5up": ["libs/react-html5up/src/index.ts"],
       "@react-html5up-components": [
         "libs/react-html5up/src/components/src/index.ts"
