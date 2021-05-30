@@ -1,1 +1,1 @@
-export * from './lib/react-html5up-src-utilities';
+export * from '@react-html5up-utilities/style-reset';

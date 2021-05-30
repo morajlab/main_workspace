@@ -73,6 +73,9 @@
       ],
       "@react-html5up-utilities": [
         "libs/react-html5up/src/utilities/src/index.ts"
+      ],
+      "@react-html5up-utilities/style-reset": [
+        "libs/react-html5up/src/utilities/src/lib/style-reset/src/index.ts"
       ]
     }
   },
