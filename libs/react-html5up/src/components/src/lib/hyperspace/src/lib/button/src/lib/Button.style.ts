@@ -1,12 +1,6 @@
 import { css } from 'glamor';
-import { IButtonProps } from './Button';
-
-export interface IButtonStyleProps {
-  size: IButtonProps['size'];
-  primary: IButtonProps['primary'];
-  disable: IButtonProps['disable'];
-  icon: IButtonProps['icon'] | boolean;
-}
+import { IButtonStyleProps } from './Button.types';
+import { resetStyle } from '@react-html5up-utilities/style-reset';
 
 export const ButtonStyles = ({
   size,
@@ -110,7 +104,7 @@ export const ButtonStyles = ({
     );
   }
 
-  return styles;
+  return resetStyle(styles);
 };
 
 export default ButtonStyles;

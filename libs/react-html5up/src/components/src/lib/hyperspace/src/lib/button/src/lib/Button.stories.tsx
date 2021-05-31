@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { StoryGroups } from '@react-html5up-components/hyperspace/.storybook/app';
-import { Button, IButtonProps } from './Button';
+import { Button } from './Button';
+import type { IButtonProps } from './Button.types';
 import { faGift } from '@react-html5up-components/hyperspace/icon';
 
 const { UIComponents } = StoryGroups();

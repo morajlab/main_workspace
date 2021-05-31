@@ -1,17 +1,7 @@
 import React, { FunctionComponent, createElement, Fragment } from 'react';
 import { ButtonStyles } from './Button.style';
 import { Icon } from '@react-html5up-components/hyperspace/icon';
-import type { IconDefinition } from '@react-html5up-components/hyperspace/icon';
-
-export interface IButtonProps {
-  title: string;
-  size?: 'small' | 'default' | 'large';
-  primary?: boolean;
-  disable?: boolean;
-  icon?: IconDefinition;
-  as?: 'button' | 'link';
-  to?: string;
-}
+import { IButtonProps } from './Button.types';
 
 export const Button: FunctionComponent<IButtonProps> = ({
   primary,
