@@ -21,5 +21,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/components/src/lib/hyperspace/src/lib/intro',
     '<rootDir>/libs/react-html5up/src/utilities',
     '<rootDir>/libs/react-html5up/src/utilities/src/lib/style-reset',
+    '<rootDir>/libs/nx/nx-webpack-plugin',
   ],
 };

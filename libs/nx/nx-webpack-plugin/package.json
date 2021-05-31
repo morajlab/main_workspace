@@ -1,0 +1,5 @@
+{
+  "name": "@morajlab/nx-webpack-plugin",
+  "version": "0.1.0",
+  "main": "./src/index.js"
+}

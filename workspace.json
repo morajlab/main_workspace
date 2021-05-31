@@ -761,6 +761,7 @@
             "entryFile": "libs/react-html5up/src/utilities/src/lib/style-reset/src/index.ts",
             "external": ["react", "react-dom"],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "webpackConfig": "libs/nx/nx-webpack-plugin",
             "assets": [
               {
                 "glob": "libs/react-html5up/src/utilities/src/lib/style-reset/README.md",
@@ -786,6 +787,38 @@
           "options": {
             "jestConfig": "libs/react-html5up/src/utilities/src/lib/style-reset/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "nx-nx-webpack-plugin": {
+      "root": "libs/nx/nx-webpack-plugin",
+      "sourceRoot": "libs/nx/nx-webpack-plugin/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/nx/nx-webpack-plugin/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nx/nx-webpack-plugin"],
+          "options": {
+            "jestConfig": "libs/nx/nx-webpack-plugin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/nx/nx-webpack-plugin",
+            "tsConfig": "libs/nx/nx-webpack-plugin/tsconfig.lib.json",
+            "packageJson": "libs/nx/nx-webpack-plugin/package.json",
+            "main": "libs/nx/nx-webpack-plugin/src/index.js",
+            "assets": ["libs/nx/nx-webpack-plugin/*.md"]
           }
         }
       }
