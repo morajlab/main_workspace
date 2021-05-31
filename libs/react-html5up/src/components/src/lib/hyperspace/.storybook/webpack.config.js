@@ -1,5 +1,6 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const rootWebpackConfig = require('../../../../../../../../.storybook/webpack.config');
+const nxWebpackPlugin = require('../../../../../../../../libs/nx/nx-webpack-plugin');
 /**
  * Export a function. Accept the base config as the only param.
  *
@@ -79,6 +80,17 @@ module.exports = async ({ config, mode }) => {
       ],
     }
   );
+
+  const defaultStyleRule = nxWebpackPlugin(config).getRule(/.css/)[0];
+
+  config.module.rules[
+    config.module.rules.indexOf(defaultStyleRule)
+  ] = Object.assign(defaultStyleRule, {
+    test: /\.(scss|sass|css)$/,
+    use: ['style-loader', 'css-loader', 'sass-loader'].map((loader) =>
+      require.resolve(loader)
+    ),
+  });
 
   return config;
 };
