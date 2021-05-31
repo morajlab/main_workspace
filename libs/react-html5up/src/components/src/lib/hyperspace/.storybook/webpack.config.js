@@ -81,7 +81,10 @@ module.exports = async ({ config, mode }) => {
     }
   );
 
-  const defaultStyleRule = nxWebpackPlugin(config).getRule(/.css/)[0];
+  const resultConfig = nxWebpackPlugin(config);
+  const defaultStyleRule = resultConfig.tools.getRule(/.css/)[0];
+
+  config = resultConfig.config;
 
   config.module.rules[
     config.module.rules.indexOf(defaultStyleRule)

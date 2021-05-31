@@ -28,11 +28,19 @@ module.exports = (config, context = null) => {
     nrwlConfig(config);
   }
 
-  return Object.assign(
-    {
-      ...config,
-      node: { global: true, fs: 'empty' },
+  const resultConfig = {
+    ...config,
+    node: { global: true, fs: 'empty' },
+  };
+
+  if (context) {
+    return resultConfig;
+  }
+
+  return {
+    config: resultConfig,
+    tools: {
+      getRule: (pattern) => getRule(resultConfig, pattern),
     },
-    context ? {} : { getRule: (pattern) => getRule(config, pattern) }
-  );
+  };
 };

@@ -1,10 +1,14 @@
 import { IResetStyleProps } from './reset.types';
-import * as resetSass from './reset.module.scss';
+import { readFileSync } from 'fs';
 
 export const resetStyle = (props: IResetStyleProps) => {
   const styles = props;
 
-  console.log(resetSass);
+  const content = readFileSync('reset.module.scss', {
+    encoding: 'utf8',
+  });
+
+  console.log(content);
 
   return styles;
 };
