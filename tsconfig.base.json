@@ -77,7 +77,8 @@
       "@react-html5up-utilities/style-reset": [
         "libs/react-html5up/src/utilities/src/lib/style-reset/src/index.ts"
       ],
-      "@morajlab/nx-webpack-plugin": ["libs/nx/nx-webpack-plugin/src/index.js"]
+      "@morajlab/nx-webpack-plugin": ["libs/nx/nx-webpack-plugin/src/index.js"],
+      "@morajlab/style-reset": ["libs/style-reset/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

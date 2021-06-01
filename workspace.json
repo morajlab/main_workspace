@@ -56,7 +56,7 @@
               "apps/react-html5up-templates/hyperspace/react-html5up-hyperspace/src/styles.scss"
             ],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "libs/nx/nx-webpack-plugin"
           },
           "configurations": {
             "production": {
@@ -819,6 +819,38 @@
             "packageJson": "libs/nx/nx-webpack-plugin/package.json",
             "main": "libs/nx/nx-webpack-plugin/src/index.js",
             "assets": ["libs/nx/nx-webpack-plugin/*.md"]
+          }
+        }
+      }
+    },
+    "style-reset": {
+      "root": "libs/style-reset",
+      "sourceRoot": "libs/style-reset/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/style-reset/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/style-reset"],
+          "options": {
+            "jestConfig": "libs/style-reset/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/style-reset",
+            "tsConfig": "libs/style-reset/tsconfig.lib.json",
+            "packageJson": "libs/style-reset/package.json",
+            "main": "libs/style-reset/src/index.ts",
+            "assets": ["libs/style-reset/*.md"]
           }
         }
       }

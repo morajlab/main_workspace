@@ -1,0 +1,18 @@
+{
+  "name": "@morajlab/style-reset",
+  "version": "0.1.0",
+  "description": "Normalize browsers' default style",
+  "license": "MIT",
+  "author": "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)",
+  "contributors": [
+    "Morteza Jamali <mortezajamali4241@gmail.com> (https://moraj.ir)"
+  ],
+  "keywords": [
+    "normalize",
+    "css",
+    "reset",
+    "browser",
+    "style"
+  ],
+  "main": "dist/index.js"
+}

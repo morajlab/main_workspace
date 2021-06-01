@@ -103,6 +103,9 @@
     },
     "nx-nx-webpack-plugin": {
       "tags": []
+    },
+    "style-reset": {
+      "tags": []
     }
   }
 }

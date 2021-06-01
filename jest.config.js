@@ -22,5 +22,6 @@ module.exports = {
     '<rootDir>/libs/react-html5up/src/utilities',
     '<rootDir>/libs/react-html5up/src/utilities/src/lib/style-reset',
     '<rootDir>/libs/nx/nx-webpack-plugin',
+    '<rootDir>/libs/style-reset',
   ],
 };
