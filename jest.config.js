@@ -1,3 +1,3 @@
 module.exports = {
-  projects: [],
+  projects: ['<rootDir>/libs/nx-php', '<rootDir>/apps/nx-php-e2e'],
 };

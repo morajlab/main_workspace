@@ -30,5 +30,82 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "nx-php": {
+      "root": "libs/nx-php",
+      "sourceRoot": "libs/nx-php/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/nx-php/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/nx-php"
+          ],
+          "options": {
+            "jestConfig": "libs/nx-php/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/nx-php",
+            "tsConfig": "libs/nx-php/tsconfig.lib.json",
+            "packageJson": "libs/nx-php/package.json",
+            "main": "libs/nx-php/src/index.ts",
+            "assets": [
+              "libs/nx-php/*.md",
+              {
+                "input": "./libs/nx-php/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-php/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-php",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/nx-php",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-php-e2e": {
+      "projectType": "application",
+      "root": "apps/nx-php-e2e",
+      "sourceRoot": "apps/nx-php-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-php:build",
+            "npmPackageName": "@workspace-desktop/nx-php",
+            "pluginOutputPath": "dist/libs/nx-php",
+            "jestConfig": "apps/nx-php-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  }
 }

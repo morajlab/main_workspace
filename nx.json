@@ -25,5 +25,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "nx-php": {
+      "tags": []
+    },
+    "nx-php-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-php"]
+    }
+  }
 }
