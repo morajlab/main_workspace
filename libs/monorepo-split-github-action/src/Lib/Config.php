@@ -1,6 +1,6 @@
 <?php
 
-namespace Symplify\MonorepoSplit;
+namespace Monosplit\Lib;
 
 final class Config
 {

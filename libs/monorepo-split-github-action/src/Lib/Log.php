@@ -1,9 +1,10 @@
 <?php
 
-namespace Symplify\MonorepoSplit;
+namespace Monosplit\Lib;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monosplit\Exception\LogException;
 use \Bramus\Monolog\Formatter\ColoredLineFormatter;
 
 class Log
@@ -21,23 +22,32 @@ class Log
         $this->logger->pushHandler($stream);
     }
 
-    public function debug(string $message): void
+    public function debug(string $message, bool $format = false, $values = []): void
     {
-        $this->logger->debug($message);
+        $this->logger->debug($format ? $this->format($message, $values) : $message);
     }
 
-    public function success(string $message): void
+    public function success(string $message, bool $format = false, $values = []): void
     {
-        $this->logger->info($message);
+        $this->logger->info($format ? $this->format($message, $values) : $message);
     }
 
-    public function error(string $message): void
+    public function error(string $message, bool $format = false, $values = []): void
     {
-        $this->logger->error($message);
+        $this->logger->error($format ? $this->format($message, $values) : $message);
     }
 
-    public function warn(string $message): void
+    public function warn(string $message, bool $format = false, $values = []): void
     {
-        $this->logger->warning($message);
+        $this->logger->warning($format ? $this->format($message, $values) : $message);
+    }
+
+    public function format(string $template, $values): string
+    {
+        if (empty($values)) {
+            throw new LogException('Values argument is empty');
+        }
+
+        return sprintf($template, ...$values);
     }
 }

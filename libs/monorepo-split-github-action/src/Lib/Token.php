@@ -1,8 +1,8 @@
 <?php
 
-namespace Symplify\MonorepoSplit;
+namespace Monosplit\Lib;
 
-use Symplify\MonorepoSplit\Exception\ConfigurationException;
+use Monosplit\Exception\ConfigurationException;
 
 final class Token
 {

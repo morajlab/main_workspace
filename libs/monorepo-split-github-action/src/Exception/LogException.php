@@ -4,6 +4,6 @@ namespace Monosplit\Exception;
 
 use InvalidArgumentException;
 
-final class ConfigurationException extends InvalidArgumentException
+final class LogException extends InvalidArgumentException
 {
 }

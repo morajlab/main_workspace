@@ -1,8 +1,8 @@
 <?php
 
-namespace Symplify\MonorepoSplit;
+namespace Monosplit\Lib;
 
-use Symplify\MonorepoSplit\Exception\ConfigurationException;
+use Monosplit\Exception\ConfigurationException;
 
 final class ConfigFactory
 {
@@ -27,11 +27,11 @@ final class ConfigFactory
      */
     private const DEFAULT_GITLAB_HOST = 'gitlab.com';
 
-    private PublicAccessTokenResolver $publicAccessTokenResolver;
+    private Token $publicAccessTokenResolver;
 
     public function __construct()
     {
-        $this->publicAccessTokenResolver = new PublicAccessTokenResolver();
+        $this->publicAccessTokenResolver = new Token();
     }
 
     /**

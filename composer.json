@@ -6,5 +6,12 @@
   },
   "require-dev": {
     "phpstan/phpstan": "^0.12.88"
+  },
+  "autoload": {
+    "psr-4": {
+      "Monosplit\\Lib\\": "libs/monorepo-split-github-action/src/Lib",
+      "Monosplit\\Exception\\": "libs/monorepo-split-github-action/src/Exception",
+      "ACFileManager\\": "libs/ac-filemanager/Src"
+    }
   }
 }
