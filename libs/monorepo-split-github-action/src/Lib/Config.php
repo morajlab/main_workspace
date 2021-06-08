@@ -1,9 +1,5 @@
 <?php
 
-// PHP 8.0
-
-declare(strict_types=1);
-
 namespace Symplify\MonorepoSplit;
 
 final class Config

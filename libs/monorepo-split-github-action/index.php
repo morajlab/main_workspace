@@ -2,19 +2,22 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/src/autoload.php';
+
 use Symplify\MonorepoSplit\Config;
+use Symplify\MonorepoSplit\Utilities;
 use Symplify\MonorepoSplit\ConfigFactory;
 use Symplify\MonorepoSplit\Exception\ConfigurationException;
 
-require_once __DIR__ . '/src/autoload.php';
+$utilities = new Utilities();
 
-note('Resolving configuration...');
+$utilities->note('Resolving configuration...');
 
 $configFactory = new ConfigFactory();
 try {
     $config = $configFactory->create(getenv());
 } catch (ConfigurationException $configurationException) {
-    error($configurationException->getMessage());
+    $utilities->error($configurationException->getMessage());
     exit(0);
 }
 
@@ -29,13 +32,13 @@ $hostRepositoryOrganizationName = $config->getGitRepository();
 // info
 $clonedRepository='https://' . $hostRepositoryOrganizationName;
 $cloningMessage = sprintf('Cloning "%s" repository to "%s" directory', $clonedRepository, $cloneDirectory);
-note($cloningMessage);
+$utilities->note($cloningMessage);
 
 $commandLine = 'git clone -- https://' . $config->getAccessToken() . '@' . $hostRepositoryOrganizationName . ' ' . $cloneDirectory;
 exec_with_note($commandLine);
 
 
-note('Cleaning destination repository of old files');
+$utilities->note('Cleaning destination repository of old files');
 // We're only interested in the .git directory, move it to $TARGET_DIR and use it from now on
 mkdir($buildDirectory . '/.git', 0777, true);
 
@@ -55,11 +58,11 @@ exec('rm -rf ' . $cloneDirectory);
 // copy the package directory including all hidden files to the clone dir
 // make sure the source dir ends with `/.` so that all contents are copied (including .github etc)
 $copyMessage = sprintf('Copying contents to git repo of "%s" branch', $config->getCommitHash());
-note($copyMessage);
+$utilities->note($copyMessage);
 $commandLine = sprintf('cp -ra %s %s', $config->getPackageDirectory() . '/.', $buildDirectory);
 exec($commandLine);
 
-note('Files that will be pushed');
+$utilities->note('Files that will be pushed');
 list_directory_files($buildDirectory);
 
 
@@ -72,8 +75,7 @@ $formerWorkingDirectory = getcwd();
 chdir($buildDirectory);
 
 $restoreChdirMessage = sprintf('Changing directory from "%s" to "%s"', $formerWorkingDirectory, $buildDirectory);
-note($restoreChdirMessage);
-
+$utilities->note($restoreChdirMessage);
 
 
 // avoids doing the git commit failing if there are no changes to be commit, see https://stackoverflow.com/a/8123841/1348344
@@ -86,23 +88,23 @@ exec('git diff-index --quiet HEAD', $outputLines, $hasChangedFiles);
 // 0 = no changed files
 
 if ($hasChangedFiles === 1) {
-    note('Adding git commit');
+    $utilities->note('Adding git commit');
     exec_with_output_print('git add .');
 
     $message = sprintf('Pushing git commit with "%s" message to "%s"', $commitMessage, $config->getBranch());
-    note($message);
+    $utilities->note($message);
 
     exec("git commit --message '$commitMessage'");
     exec('git push --quiet origin ' . $config->getBranch());
 } else {
-    note('No files to change');
+    $utilities->note('No files to change');
 }
 
 
 // push tag if present
 if ($config->getTag()) {
     $message = sprintf('Publishing "%s"', $config->getTag());
-    note($message);
+    $utilities->note($message);
 
     $commandLine = sprintf('git tag %s -m "%s"', $config->getTag(), $message);
     exec_with_note($commandLine);
@@ -114,7 +116,7 @@ if ($config->getTag()) {
 // restore original directory to avoid nesting WTFs
 chdir($formerWorkingDirectory);
 $chdirMessage = sprintf('Changing directory from "%s" to "%s"', $buildDirectory, $formerWorkingDirectory);
-note($chdirMessage);
+$utilities->note($chdirMessage);
 
 
 function createCommitMessage(string $commitSha): string
@@ -122,41 +124,6 @@ function createCommitMessage(string $commitSha): string
     exec("git show -s --format=%B $commitSha", $outputLines);
     return $outputLines[0] ?? '';
 }
-
-
-function note(string $message): void
-{
-    echo PHP_EOL . PHP_EOL . "\033[0;33m[NOTE] " . $message . "\033[0m" . PHP_EOL . PHP_EOL;
-}
-
-function error(string $message): void
-{
-    echo PHP_EOL . PHP_EOL . "\033[0;31m[ERROR] " . $message . "\033[0m" . PHP_EOL . PHP_EOL;
-}
-
-
-
-
-function list_directory_files(string $directory): void {
-    exec_with_output_print('ls -la ' . $directory);
-}
-
-
-/********************* helper functions *********************/
-
-function exec_with_note(string $commandLine): void
-{
-    note('Running: ' . $commandLine);
-    exec($commandLine);
-}
-
-
-function exec_with_output_print(string $commandLine): void
-{
-    exec($commandLine, $outputLines);
-    echo implode(PHP_EOL, $outputLines);
-}
-
 
 function setupGitCredentials(Config $config): void
 {
@@ -168,3 +135,22 @@ function setupGitCredentials(Config $config): void
         exec('git config --global user.email ' . $config->getUserEmail());
     }
 }
+public function exec_with_output_print(string $commandLine): void
+    {
+        exec($commandLine, $outputLines);
+        echo implode(PHP_EOL, $outputLines);
+    }
+
+    public function exec(string $commandLine, bool $log = false): void
+    {
+        if ($log) {
+            $this->note('Running: ' . $commandLine);
+        }
+
+        exec($commandLine);
+    }
+
+    function list_directory_files(string $directory): void
+    {
+        $this->exec_with_output_print('ls -la ' . $directory);
+    }

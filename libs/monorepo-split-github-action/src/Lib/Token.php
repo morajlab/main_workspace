@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Symplify\MonorepoSplit;
 
 use Symplify\MonorepoSplit\Exception\ConfigurationException;
 
-final class PublicAccessTokenResolver
+final class Token
 {
     /**
      * @var string
