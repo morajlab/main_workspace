@@ -1,6 +1,5 @@
 import { css } from 'glamor';
 import { IButtonStyleProps } from './Button.types';
-import { resetStyle } from '@react-html5up-utilities/style-reset';
 
 export const ButtonStyles = ({
   size,
@@ -33,6 +32,9 @@ export const ButtonStyles = ({
   }
 
   let styles = css({
+    userSelect: 'none',
+    boxSizing: 'border-box',
+    fontFamily: 'Arial, Helvetica, sans-serif',
     appearance: 'none',
     transition: 'border-color 0.2s ease',
     backgroundColor,
@@ -56,6 +58,13 @@ export const ButtonStyles = ({
     textDecoration: 'none',
     textTransform: 'uppercase',
     whiteSpace: 'nowrap',
+    '& span': {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     ':hover': {
       borderColor: 'rgba(255,255,255,0.55) !important',
       ':after': {
@@ -104,7 +113,7 @@ export const ButtonStyles = ({
     );
   }
 
-  return resetStyle(styles);
+  return styles;
 };
 
 export default ButtonStyles;

@@ -27,10 +27,10 @@ export const Button: FunctionComponent<IButtonProps> = ({
       }),
       ...(element === 'a' ? { href: to } : { typeof: 'button' }),
     },
-    <Fragment>
+    <span>
       {icon ? <Icon icon={icon} /> : null}
       {title}
-    </Fragment>
+    </span>
   );
 };
 

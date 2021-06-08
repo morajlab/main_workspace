@@ -9,6 +9,7 @@ addParameters({
 });
 
 export const parameters = {
+  controls: { expanded: true },
   options: {
     storySort: {
       order: ['Docs', 'Components'],
