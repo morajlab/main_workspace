@@ -1,4 +1,4 @@
-import { css, StyleAttribute } from 'glamor';
+import { css } from 'glamor';
 import { IButtonStyleProps } from './Button.types';
 import { resetStyle } from '@react-html5up-utilities/style-reset';
 

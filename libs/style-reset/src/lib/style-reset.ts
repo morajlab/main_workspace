@@ -1,4 +1,6 @@
-export const styles = () => [
+import { CSSProperties } from 'react';
+
+export const styles = (): { [key: string]: CSSProperties }[] => [
   {
     '*, ::before, ::after': {
       boxSizing: 'border-box',
