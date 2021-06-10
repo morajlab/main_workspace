@@ -213,6 +213,38 @@
           }
         }
       }
+    },
+    "react-mdb-fluent-src-lib-styles": {
+      "root": "libs/react-mdb-fluent/src/lib/styles",
+      "sourceRoot": "libs/react-mdb-fluent/src/lib/styles/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/react-mdb-fluent/src/lib/styles/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/react-mdb-fluent/src/lib/styles"],
+          "options": {
+            "jestConfig": "libs/react-mdb-fluent/src/lib/styles/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/react-mdb-fluent/src/lib/styles",
+            "tsConfig": "libs/react-mdb-fluent/src/lib/styles/tsconfig.lib.json",
+            "packageJson": "libs/react-mdb-fluent/src/lib/styles/package.json",
+            "main": "libs/react-mdb-fluent/src/lib/styles/src/index.ts",
+            "assets": ["libs/react-mdb-fluent/src/lib/styles/*.md"]
+          }
+        }
+      }
     }
   }
 }

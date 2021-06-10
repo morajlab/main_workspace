@@ -38,6 +38,9 @@
     },
     "react-mdb-fluent-src-lib-component-src-lib-button": {
       "tags": []
+    },
+    "react-mdb-fluent-src-lib-styles": {
+      "tags": []
     }
   }
 }

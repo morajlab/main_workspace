@@ -21,6 +21,9 @@
       ],
       "@morajlab/react-mdb-fluent-button": [
         "libs/react-mdb-fluent/src/lib/component/src/lib/button/src/index.ts"
+      ],
+      "@morajlab/react-mdb-fluent-styles": [
+        "libs/react-mdb-fluent/src/lib/styles/src/index.ts"
       ]
     }
   },
