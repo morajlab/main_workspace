@@ -2,15 +2,19 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import { StoryGroups } from '@react-html5up-components/hyperspace/.storybook/app';
 import { Button } from './Button';
+import { faGift } from '@react-html5up-components/hyperspace/icon';
+import * as docs from './Button.stories.mdx';
 import type { IButtonProps } from './Button.types';
-import * as icons from '@react-html5up-components/hyperspace/icon';
 import 'reset-css/reset.css';
-
-const { UIComponents } = StoryGroups();
 
 export default {
   component: Button,
-  title: UIComponents('Button'),
+  title: StoryGroups().UIComponents('Button'),
+  parameters: {
+    docs: {
+      page: docs,
+    },
+  },
   argTypes: {
     title: {
       type: { name: 'string', required: true },
@@ -105,15 +109,11 @@ Disable.argTypes = {
 
 Icon.args = {
   title: 'Icon Button',
-  icon: icons.faGift,
+  icon: faGift,
 };
 Icon.argTypes = {
   icon: {
     type: { name: 'Icon', required: false },
-    options: [icons],
-    control: {
-      type: 'select',
-    },
     defaultValue: 'null',
     description: 'Button icon object',
     table: {
