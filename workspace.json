@@ -127,6 +127,92 @@
           }
         }
       }
+    },
+    "react-mdb-fluent-src-lib-component": {
+      "root": "libs/react-mdb-fluent/src/lib/component",
+      "sourceRoot": "libs/react-mdb-fluent/src/lib/component/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/react-mdb-fluent/src/lib/component",
+            "tsConfig": "libs/react-mdb-fluent/src/lib/component/tsconfig.lib.json",
+            "project": "libs/react-mdb-fluent/src/lib/component/package.json",
+            "entryFile": "libs/react-mdb-fluent/src/lib/component/src/index.ts",
+            "external": ["react", "react-dom"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/react-mdb-fluent/src/lib/component/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-mdb-fluent/src/lib/component/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/react-mdb-fluent/src/lib/component"],
+          "options": {
+            "jestConfig": "libs/react-mdb-fluent/src/lib/component/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "react-mdb-fluent-src-lib-component-src-lib-button": {
+      "root": "libs/react-mdb-fluent/src/lib/component/src/lib/button",
+      "sourceRoot": "libs/react-mdb-fluent/src/lib/component/src/lib/button/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/react-mdb-fluent/src/lib/component/src/lib/button",
+            "tsConfig": "libs/react-mdb-fluent/src/lib/component/src/lib/button/tsconfig.lib.json",
+            "project": "libs/react-mdb-fluent/src/lib/component/src/lib/button/package.json",
+            "entryFile": "libs/react-mdb-fluent/src/lib/component/src/lib/button/src/index.ts",
+            "external": ["react", "react-dom"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/react-mdb-fluent/src/lib/component/src/lib/button/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/react-mdb-fluent/src/lib/component/src/lib/button/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/react-mdb-fluent/src/lib/component/src/lib/button"
+          ],
+          "options": {
+            "jestConfig": "libs/react-mdb-fluent/src/lib/component/src/lib/button/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

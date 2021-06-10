@@ -15,7 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@morajlab/react-mdb-fluent": ["libs/react-mdb-fluent/src/index.ts"]
+      "@morajlab/react-mdb-fluent": ["libs/react-mdb-fluent/src/index.ts"],
+      "@morajlab/react-mdb-fluent-components": [
+        "libs/react-mdb-fluent/src/lib/component/src/index.ts"
+      ],
+      "@morajlab/react-mdb-fluent-button": [
+        "libs/react-mdb-fluent/src/lib/component/src/lib/button/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

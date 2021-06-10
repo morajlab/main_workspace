@@ -1,1 +1,1 @@
-export * from './lib/ReactMdbFluent';
+export * from '@morajlab/react-mdb-fluent-components';

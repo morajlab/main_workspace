@@ -32,6 +32,12 @@
     "react-mdb-fluent-e2e": {
       "tags": [],
       "implicitDependencies": ["react-mdb-fluent"]
+    },
+    "react-mdb-fluent-src-lib-component": {
+      "tags": []
+    },
+    "react-mdb-fluent-src-lib-component-src-lib-button": {
+      "tags": []
     }
   }
 }
