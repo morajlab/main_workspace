@@ -25,5 +25,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "react-mdb-fluent": {
+      "tags": []
+    },
+    "react-mdb-fluent-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-mdb-fluent"]
+    }
+  }
 }
